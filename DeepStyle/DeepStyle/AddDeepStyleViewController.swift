@@ -8,11 +8,14 @@
 
 import UIKit
 
-// TODO: when button tapped, let user choose an image
 
 class AddDeepStyleViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    // the view controller that spawned us will receive our images back, so it registers as a SourceAndStyleImageReciever
+    var sourceAndStyleReceiver : SourceAndStyleImageReciever? = nil
+    
     var presenterViewController: PresenterViewController? = nil
+    
     var photoImage: UIImage? = nil
     var paintingImage: UIImage? = nil
     @IBOutlet var choosePhotoButton: UIButton? = nil
@@ -24,17 +27,20 @@ class AddDeepStyleViewController: UIViewController, UIImagePickerControllerDeleg
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel:")
         self.navigationItem.leftBarButtonItem = cancelButton;
         
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "done:")
-        self.navigationItem.rightBarButtonItem = doneButton;
+        
     }
 
     func cancel(sender: UIBarButtonItem) {
         presenterViewController?.dismiss()
     }
     
-    func done(sender: UIBarButtonItem) {
+    @IBAction func create(sender: AnyObject) {
         
-        // TODO: callback PhotoReceiverDelegate with the images
+        if let photo = photoImage, painting = paintingImage {
+            sourceAndStyleReceiver?.dismissWithImages(photo, styleImage: painting)
+        } else {
+            print("Either photo or painting were nil")
+        }
         
         
     }

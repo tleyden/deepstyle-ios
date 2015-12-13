@@ -2,9 +2,10 @@
 
 import UIKit
 
-class RecentGalleryViewController: UITableViewController, PresenterViewController {
+class RecentGalleryViewController: UITableViewController, PresenterViewController, SourceAndStyleImageReciever {
     
     var presenterViewController: PresenterViewController? = nil
+
     
     override func viewDidLoad() {
         
@@ -29,14 +30,18 @@ class RecentGalleryViewController: UITableViewController, PresenterViewControlle
         presenterViewController?.dismiss()
     }
     
+    
+    
     func addDeepStyle(sender: UIBarButtonItem) {
         
-        print("addDeepStyle")
         let addDeepStyle = AddDeepStyleViewController()
         
         // register ourselves as the presenter view controller delegate, so we get called back
         // when this view wants to get rid of itself
         addDeepStyle.presenterViewController = self
+        
+        // get called back with UIImages that the user chose
+        addDeepStyle.sourceAndStyleReceiver = self
         
         let nav = UINavigationController(rootViewController: addDeepStyle)
         self.presentViewController(nav, animated: true, completion: nil)
@@ -44,6 +49,11 @@ class RecentGalleryViewController: UITableViewController, PresenterViewControlle
     }
     
     func dismiss() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func dismissWithImages(sourceImage: UIImage, styleImage: UIImage) {
+        print("todo, process images")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

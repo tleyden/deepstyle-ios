@@ -7,7 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 protocol PresenterViewController {
     func dismiss()
+}
+
+protocol SourceAndStyleImageReciever {
+    func dismissWithImages(sourceImage: UIImage, styleImage: UIImage)
 }

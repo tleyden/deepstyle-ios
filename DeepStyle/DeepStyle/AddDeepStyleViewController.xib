@@ -17,6 +17,13 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQp-KA-YCY">
+                    <rect key="frame" x="44" y="163" width="112" height="30"/>
+                    <state key="normal" title="Choose Painting"/>
+                    <connections>
+                        <action selector="doPick:" destination="-1" eventType="touchUpInside" id="NOO-eS-3Xp"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcd-FE-68q">
                     <rect key="frame" x="44" y="83" width="97" height="30"/>
                     <state key="normal" title="Choose Photo"/>
@@ -24,11 +31,11 @@
                         <action selector="doPick:" destination="-1" eventType="touchUpInside" id="NBb-9H-SNp"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQp-KA-YCY">
-                    <rect key="frame" x="44" y="163" width="112" height="30"/>
-                    <state key="normal" title="Choose Painting"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmA-v6-6jd">
+                    <rect key="frame" x="44" y="246" width="46" height="30"/>
+                    <state key="normal" title="Create"/>
                     <connections>
-                        <action selector="doPick:" destination="-1" eventType="touchUpInside" id="NOO-eS-3Xp"/>
+                        <action selector="create:" destination="-1" eventType="touchUpInside" id="JxE-wX-jvo"/>
                     </connections>
                 </button>
             </subviews>
