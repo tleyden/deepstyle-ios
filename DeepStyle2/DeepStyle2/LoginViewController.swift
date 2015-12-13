@@ -39,6 +39,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        do {
+            try DBHelper.sharedInstance.startReplicationFromFacebookToken()
+            
+        } catch {
+            print("Error starting replication: \(error)")
+        }
         showRecentGalleryViewController()
     }
     

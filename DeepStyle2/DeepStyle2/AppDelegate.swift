@@ -8,21 +8,30 @@ import FBSDKLoginKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    /*
+    // The local DB name
+    let databaseName = "deepstyle"
+    
+    // The remote database URL to sync with.
+    let serverDbURL = NSURL(string: "http://demo.couchbasemobile.com:4984/deepstyle/")!
     
     var database: CBLDatabase? = nil
     
     override init() {
+        DBHelper.sharedInstance()
+        
         do {
-            try database = CBLManager.sharedInstance().databaseNamed("deepstyle")
+            try database = CBLManager.sharedInstance().databaseNamed(databaseName)
         }
         catch {
             print("Error initializing database: \(error)")
         }
     }
+    */
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        if database == nil {
+        if DBHelper.sharedInstance.database == nil {
             return false
         }
         
