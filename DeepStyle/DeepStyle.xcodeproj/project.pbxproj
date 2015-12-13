@@ -18,6 +18,12 @@
 		158245171C1D24B40099155A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158245161C1D24B40099155A /* Util.swift */; };
 		158245241C1D43020099155A /* AddDeepStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158245221C1D43020099155A /* AddDeepStyleViewController.swift */; };
 		158245251C1D43020099155A /* AddDeepStyleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 158245231C1D43020099155A /* AddDeepStyleViewController.xib */; };
+		158245301C1DF9CA0099155A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1582452F1C1DF9CA0099155A /* CFNetwork.framework */; };
+		158245321C1DF9D20099155A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158245311C1DF9D20099155A /* Security.framework */; };
+		158245341C1DF9DC0099155A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158245331C1DF9DC0099155A /* SystemConfiguration.framework */; };
+		158245361C1DF9E80099155A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 158245351C1DF9E80099155A /* libsqlite3.tbd */; };
+		158245381C1DF9F10099155A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 158245371C1DF9F10099155A /* libz.tbd */; };
+		15FC37631C1DFD2A00560DE6 /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15FC37621C1DFD2A00560DE6 /* CouchbaseLite.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +54,12 @@
 		1582451A1C1D30D40099155A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		158245221C1D43020099155A /* AddDeepStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeepStyleViewController.swift; sourceTree = "<group>"; };
 		158245231C1D43020099155A /* AddDeepStyleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeepStyleViewController.xib; sourceTree = "<group>"; };
+		1582452F1C1DF9CA0099155A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		158245311C1DF9D20099155A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		158245331C1DF9DC0099155A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		158245351C1DF9E80099155A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		158245371C1DF9F10099155A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		15FC37621C1DFD2A00560DE6 /* CouchbaseLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchbaseLite.framework; path = Frameworks/CouchbaseLite.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +67,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				158245381C1DF9F10099155A /* libz.tbd in Frameworks */,
+				158245361C1DF9E80099155A /* libsqlite3.tbd in Frameworks */,
+				158245341C1DF9DC0099155A /* SystemConfiguration.framework in Frameworks */,
+				158245321C1DF9D20099155A /* Security.framework in Frameworks */,
+				158245301C1DF9CA0099155A /* CFNetwork.framework in Frameworks */,
 				158245111C1D0F270099155A /* FBSDKLoginKit.framework in Frameworks */,
+				15FC37631C1DFD2A00560DE6 /* CouchbaseLite.framework in Frameworks */,
 				1582450B1C1CFD030099155A /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +135,12 @@
 		158245091C1CFCCD0099155A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15FC37621C1DFD2A00560DE6 /* CouchbaseLite.framework */,
+				158245371C1DF9F10099155A /* libz.tbd */,
+				158245351C1DF9E80099155A /* libsqlite3.tbd */,
+				158245331C1DF9DC0099155A /* SystemConfiguration.framework */,
+				158245311C1DF9D20099155A /* Security.framework */,
+				1582452F1C1DF9CA0099155A /* CFNetwork.framework */,
 				1582451A1C1D30D40099155A /* UIKit.framework */,
 				158245181C1D30C90099155A /* Foundation.framework */,
 				158245101C1D0F270099155A /* FBSDKLoginKit.framework */,
@@ -340,6 +364,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"$(PROJECT_DIR)/Frameworks/**",
+					"$(PROJECT_DIR)/**",
+				);
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/Users/tleyden/DevLibraries/FacebookSDKs-iOS-20151111";
 				INFOPLIST_FILE = DeepStyle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -353,6 +382,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"$(PROJECT_DIR)/Frameworks/**",
+					"$(PROJECT_DIR)/**",
+				);
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/Users/tleyden/DevLibraries/FacebookSDKs-iOS-20151111";
 				INFOPLIST_FILE = DeepStyle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
