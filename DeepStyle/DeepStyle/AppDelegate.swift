@@ -2,6 +2,7 @@
 
 import UIKit
 import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,14 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+       
+        FBSDKLoginButton.classForCoder()
+        
         print("Hello world")
         // greet("Foo", "Tues")
 
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.backgroundColor = UIColor.whiteColor()
-        let recentGalleryViewController =  RecentGalleryViewController()
-        self.window!.rootViewController = recentGalleryViewController
+        let loginViewController =  LoginViewController()
+        self.window!.rootViewController = loginViewController
         self.window!.makeKeyAndVisible()
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
