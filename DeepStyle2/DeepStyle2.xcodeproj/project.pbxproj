@@ -16,6 +16,14 @@
 		153A39241C1E006F0030AD5D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153A39231C1E006F0030AD5D /* SystemConfiguration.framework */; };
 		153A39261C1E00780030AD5D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 153A39251C1E00780030AD5D /* libsqlite3.tbd */; };
 		153A39281C1E007F0030AD5D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 153A39271C1E007F0030AD5D /* libz.tbd */; };
+		153A392A1C1E02760030AD5D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153A39291C1E02760030AD5D /* FBSDKCoreKit.framework */; };
+		153A392C1C1E02990030AD5D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153A392B1C1E02990030AD5D /* FBSDKLoginKit.framework */; };
+		153A39331C1E02D20030AD5D /* AddDeepStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A392D1C1E02D20030AD5D /* AddDeepStyleViewController.swift */; };
+		153A39341C1E02D20030AD5D /* AddDeepStyleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153A392E1C1E02D20030AD5D /* AddDeepStyleViewController.xib */; };
+		153A39351C1E02D20030AD5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A392F1C1E02D20030AD5D /* LoginViewController.swift */; };
+		153A39361C1E02D20030AD5D /* RecentGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A39301C1E02D20030AD5D /* RecentGalleryViewController.swift */; };
+		153A39371C1E02D20030AD5D /* RecentGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153A39311C1E02D20030AD5D /* RecentGalleryViewController.xib */; };
+		153A39381C1E02D20030AD5D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A39321C1E02D20030AD5D /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +50,14 @@
 		153A39231C1E006F0030AD5D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		153A39251C1E00780030AD5D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		153A39271C1E007F0030AD5D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		153A39291C1E02760030AD5D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		153A392B1C1E02990030AD5D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		153A392D1C1E02D20030AD5D /* AddDeepStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeepStyleViewController.swift; sourceTree = "<group>"; };
+		153A392E1C1E02D20030AD5D /* AddDeepStyleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeepStyleViewController.xib; sourceTree = "<group>"; };
+		153A392F1C1E02D20030AD5D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		153A39301C1E02D20030AD5D /* RecentGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentGalleryViewController.swift; sourceTree = "<group>"; };
+		153A39311C1E02D20030AD5D /* RecentGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentGalleryViewController.xib; sourceTree = "<group>"; };
+		153A39321C1E02D20030AD5D /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +69,9 @@
 				153A39261C1E00780030AD5D /* libsqlite3.tbd in Frameworks */,
 				153A39241C1E006F0030AD5D /* SystemConfiguration.framework in Frameworks */,
 				153A39221C1E00660030AD5D /* Security.framework in Frameworks */,
+				153A392A1C1E02760030AD5D /* FBSDKCoreKit.framework in Frameworks */,
 				153A39201C1E005F0030AD5D /* CFNetwork.framework in Frameworks */,
+				153A392C1C1E02990030AD5D /* FBSDKLoginKit.framework in Frameworks */,
 				153A391E1C1DFFD50030AD5D /* CouchbaseLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +89,8 @@
 		153A38EF1C1DFF240030AD5D = {
 			isa = PBXGroup;
 			children = (
+				153A392B1C1E02990030AD5D /* FBSDKLoginKit.framework */,
+				153A39291C1E02760030AD5D /* FBSDKCoreKit.framework */,
 				153A39271C1E007F0030AD5D /* libz.tbd */,
 				153A39251C1E00780030AD5D /* libsqlite3.tbd */,
 				153A39231C1E006F0030AD5D /* SystemConfiguration.framework */,
@@ -95,6 +115,12 @@
 		153A38FA1C1DFF240030AD5D /* DeepStyle2 */ = {
 			isa = PBXGroup;
 			children = (
+				153A392D1C1E02D20030AD5D /* AddDeepStyleViewController.swift */,
+				153A392E1C1E02D20030AD5D /* AddDeepStyleViewController.xib */,
+				153A392F1C1E02D20030AD5D /* LoginViewController.swift */,
+				153A39301C1E02D20030AD5D /* RecentGalleryViewController.swift */,
+				153A39311C1E02D20030AD5D /* RecentGalleryViewController.xib */,
+				153A39321C1E02D20030AD5D /* Util.swift */,
 				153A38FB1C1DFF240030AD5D /* AppDelegate.swift */,
 				153A39021C1DFF240030AD5D /* Assets.xcassets */,
 				153A39071C1DFF240030AD5D /* Info.plist */,
@@ -192,6 +218,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153A39371C1E02D20030AD5D /* RecentGalleryViewController.xib in Resources */,
+				153A39341C1E02D20030AD5D /* AddDeepStyleViewController.xib in Resources */,
 				153A39031C1DFF240030AD5D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,6 +238,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153A39361C1E02D20030AD5D /* RecentGalleryViewController.swift in Sources */,
+				153A39351C1E02D20030AD5D /* LoginViewController.swift in Sources */,
+				153A39381C1E02D20030AD5D /* Util.swift in Sources */,
+				153A39331C1E02D20030AD5D /* AddDeepStyleViewController.swift in Sources */,
 				153A38FC1C1DFF240030AD5D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
