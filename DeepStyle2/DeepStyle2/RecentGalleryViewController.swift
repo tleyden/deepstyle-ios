@@ -55,6 +55,13 @@ class RecentGalleryViewController: UITableViewController, PresenterViewControlle
     func dismissWithImages(sourceImage: UIImage, styleImage: UIImage) {
         print("todo, process images")
         
+        do {
+            let deepStyleJob = try DBHelper.sharedInstance.createDeepStyleJob(sourceImage, styleImage: styleImage)
+            print("DeepStyleJob: \(deepStyleJob)")
+        } catch {
+            print("Error creating deepstylejob: \(error)")
+        }
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

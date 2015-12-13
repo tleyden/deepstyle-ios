@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddDeepStyleViewController" customModule="DeepStyle" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddDeepStyleViewController" customModule="DeepStyle2" customModuleProvider="target">
             <connections>
                 <outlet property="choosePaintingButton" destination="VQp-KA-YCY" id="4Zw-Kz-Jql"/>
                 <outlet property="choosePhotoButton" destination="kcd-FE-68q" id="qMn-Ai-fGF"/>

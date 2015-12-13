@@ -29,6 +29,7 @@ class DBHelper {
         catch {
             print("Error initializing database: \(error)")
         }
+        CBLManager.enableLogging("SyncVerbose")
     }
     
     func startReplicationFromFacebookToken() throws {
@@ -47,8 +48,18 @@ class DBHelper {
         }
     
         push?.authenticator = fbAuthenticator
+        push?.continuous = true
         push?.start()
                 
+    }
+    
+    func createDeepStyleJob(sourceImage: UIImage, styleImage: UIImage) throws -> DeepStyleJob {
+        
+        let deepStyleJob:DeepStyleJob = DeepStyleJob(forNewDocumentInDatabase: database!)
+        deepStyleJob.testField = "foo"
+        try deepStyleJob.save()
+        return deepStyleJob
+        
     }
 
     
