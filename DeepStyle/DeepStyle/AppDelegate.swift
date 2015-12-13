@@ -1,27 +1,30 @@
-//
-//  AppDelegate.swift
-//  DeepStyle
-//
-//  Created by Traun Leyden on 12/8/15.
-//  Copyright © 2015 DeepStyle. All rights reserved.
-//
+
 
 import UIKit
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    func greet(name: String, day: String) -> String {
+        return "Hello \(name) today is \(day)"
+        
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        print("Hello world")
+        // greet("Foo", "Tues")
+
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.backgroundColor = UIColor.whiteColor()
-        var recentGalleryViewController =  RecentGalleryViewController()
+        let recentGalleryViewController =  RecentGalleryViewController()
         self.window!.rootViewController = recentGalleryViewController
         self.window!.makeKeyAndVisible()
-        return true
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -44,6 +47,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
 

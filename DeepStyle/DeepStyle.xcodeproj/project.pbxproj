@@ -12,6 +12,7 @@
 		1556D0311C172FD300D6665F /* DeepStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1556D0301C172FD300D6665F /* DeepStyleTests.swift */; };
 		1556D0411C17334800D6665F /* RecentGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1556D03F1C17334800D6665F /* RecentGalleryViewController.swift */; };
 		1556D0421C17334800D6665F /* RecentGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1556D0401C17334800D6665F /* RecentGalleryViewController.xib */; };
+		1582450B1C1CFD030099155A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1582450A1C1CFD030099155A /* FBSDKCoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		1556D0321C172FD300D6665F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1556D03F1C17334800D6665F /* RecentGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentGalleryViewController.swift; sourceTree = "<group>"; };
 		1556D0401C17334800D6665F /* RecentGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentGalleryViewController.xib; sourceTree = "<group>"; };
+		1582450A1C1CFD030099155A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../DevLibraries/FacebookSDKs-iOS-20151111/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1582450B1C1CFD030099155A /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +63,7 @@
 				1556D01A1C172FD300D6665F /* DeepStyle */,
 				1556D02F1C172FD300D6665F /* DeepStyleTests */,
 				1556D0191C172FD300D6665F /* Products */,
+				158245091C1CFCCD0099155A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +95,14 @@
 				1556D0321C172FD300D6665F /* Info.plist */,
 			);
 			path = DeepStyleTests;
+			sourceTree = "<group>";
+		};
+		158245091C1CFCCD0099155A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1582450A1C1CFD030099155A /* FBSDKCoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +316,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/Users/tleyden/DevLibraries/FacebookSDKs-iOS-20151111";
 				INFOPLIST_FILE = DeepStyle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.deepstyle.DeepStyle;
@@ -315,6 +328,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/Users/tleyden/DevLibraries/FacebookSDKs-iOS-20151111";
 				INFOPLIST_FILE = DeepStyle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.deepstyle.DeepStyle;
@@ -365,6 +379,7 @@
 				1556D0371C172FD300D6665F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1556D0381C172FD300D6665F /* Build configuration list for PBXNativeTarget "DeepStyleTests" */ = {
 			isa = XCConfigurationList;
@@ -373,6 +388,7 @@
 				1556D03A1C172FD300D6665F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
