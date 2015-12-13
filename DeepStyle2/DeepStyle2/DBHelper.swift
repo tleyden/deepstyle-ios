@@ -55,8 +55,16 @@ class DBHelper {
     
     func createDeepStyleJob(sourceImage: UIImage, styleImage: UIImage) throws -> DeepStyleJob {
         
+        // was getting 413 errors with PNG's, used jpeg with lowest compression possible
+        let sourceImageData = UIImageJPEGRepresentation(sourceImage, 0.2)
+        let styleImageData = UIImageJPEGRepresentation(styleImage, 0.2)
+        
+        
         let deepStyleJob:DeepStyleJob = DeepStyleJob(forNewDocumentInDatabase: database!)
-        deepStyleJob.testField = "foo"
+        deepStyleJob.state = "READY_TO_PROCESS"
+        deepStyleJob.setValue(DeepStyleJob.docType, ofProperty: "type")
+        deepStyleJob.setAttachmentNamed("source_image", withContentType: "image/jpg", content: sourceImageData!)
+        deepStyleJob.setAttachmentNamed("style_image", withContentType: "image/jpg", content: styleImageData!)
         try deepStyleJob.save()
         return deepStyleJob
         

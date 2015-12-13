@@ -9,5 +9,11 @@
 import Foundation
 
 class DeepStyleJob: CBLModel {
-    @NSManaged var testField: NSString?
+    
+    static let docType = "job"
+    
+    @NSManaged var state: NSString?
+    
+    
+    
 }
