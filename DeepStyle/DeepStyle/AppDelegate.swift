@@ -9,20 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func greet(name: String, day: String) -> String {
-        return "Hello \(name) today is \(day)"
-        
-    }
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-       
-        FBSDKLoginButton.classForCoder()
-        
-        print("Hello world")
-        // greet("Foo", "Tues")
-
-        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.backgroundColor = UIColor.whiteColor()
         let loginViewController =  LoginViewController()
