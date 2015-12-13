@@ -54,6 +54,7 @@ class RecentGalleryViewController: UITableViewController, PresenterViewControlle
     
     func dismissWithImages(sourceImage: UIImage, styleImage: UIImage) {
         print("todo, process images")
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

@@ -8,8 +8,24 @@ import FBSDKLoginKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var database: CBLDatabase? = nil
+    
+    override init() {
+        do {
+            try database = CBLManager.sharedInstance().databaseNamed("deepstyle")
+        }
+        catch {
+            print("Error initializing database: \(error)")
+        }
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        if database == nil {
+            return false
+        }
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.backgroundColor = UIColor.whiteColor()
         let loginViewController =  LoginViewController()

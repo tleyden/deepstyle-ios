@@ -58,6 +58,7 @@
 		153A39301C1E02D20030AD5D /* RecentGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentGalleryViewController.swift; sourceTree = "<group>"; };
 		153A39311C1E02D20030AD5D /* RecentGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentGalleryViewController.xib; sourceTree = "<group>"; };
 		153A39321C1E02D20030AD5D /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		153A39391C1E04E00030AD5D /* Couchbase-Lite-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Couchbase-Lite-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,15 +116,16 @@
 		153A38FA1C1DFF240030AD5D /* DeepStyle2 */ = {
 			isa = PBXGroup;
 			children = (
+				153A38FB1C1DFF240030AD5D /* AppDelegate.swift */,
 				153A392D1C1E02D20030AD5D /* AddDeepStyleViewController.swift */,
 				153A392E1C1E02D20030AD5D /* AddDeepStyleViewController.xib */,
 				153A392F1C1E02D20030AD5D /* LoginViewController.swift */,
 				153A39301C1E02D20030AD5D /* RecentGalleryViewController.swift */,
 				153A39311C1E02D20030AD5D /* RecentGalleryViewController.xib */,
 				153A39321C1E02D20030AD5D /* Util.swift */,
-				153A38FB1C1DFF240030AD5D /* AppDelegate.swift */,
 				153A39021C1DFF240030AD5D /* Assets.xcassets */,
 				153A39071C1DFF240030AD5D /* Info.plist */,
+				153A39391C1E04E00030AD5D /* Couchbase-Lite-Bridging-Header.h */,
 			);
 			path = DeepStyle2;
 			sourceTree = "<group>";
@@ -361,6 +363,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = co.deepstyle.DeepStyle2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DeepStyle2/Couchbase-Lite-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -377,6 +380,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = co.deepstyle.DeepStyle2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DeepStyle2/Couchbase-Lite-Bridging-Header.h";
 			};
 			name = Release;
 		};
