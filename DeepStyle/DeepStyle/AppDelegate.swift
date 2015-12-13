@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.rootViewController = loginViewController
         self.window!.makeKeyAndVisible()
         FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        return true
     }
 
     func applicationWillResignActive(application: UIApplication) {

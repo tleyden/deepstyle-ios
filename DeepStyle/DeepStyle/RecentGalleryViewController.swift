@@ -2,7 +2,7 @@
 
 import UIKit
 
-class RecentGalleryViewController: UITableViewController {
+class RecentGalleryViewController: UITableViewController, PresenterViewController {
     
     var presenterViewController: PresenterViewController? = nil
     
@@ -19,11 +19,32 @@ class RecentGalleryViewController: UITableViewController {
         let logoutButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: "logout:")
         self.navigationItem.leftBarButtonItem = logoutButton;
         
+        let addDeepStyleButton = UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.Plain, target: self, action: "addDeepStyle:")
+        self.navigationItem.rightBarButtonItem = addDeepStyleButton;
+        
     }
 
     func logout(sender: UIBarButtonItem) {
         print("logout")
         presenterViewController?.dismiss()
+    }
+    
+    func addDeepStyle(sender: UIBarButtonItem) {
+        
+        print("addDeepStyle")
+        let addDeepStyle = AddDeepStyleViewController()
+        
+        // register ourselves as the presenter view controller delegate, so we get called back
+        // when this view wants to get rid of itself
+        addDeepStyle.presenterViewController = self
+        
+        let nav = UINavigationController(rootViewController: addDeepStyle)
+        self.presentViewController(nav, animated: true, completion: nil)
+        
+    }
+    
+    func dismiss() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
