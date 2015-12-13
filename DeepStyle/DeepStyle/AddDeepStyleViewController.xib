@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddDeepStyleViewController" customModule="DeepStyle" customModuleProvider="target">
             <connections>
+                <outlet property="choosePaintingButton" destination="VQp-KA-YCY" id="4Zw-Kz-Jql"/>
+                <outlet property="choosePhotoButton" destination="kcd-FE-68q" id="qMn-Ai-fGF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,10 +20,16 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcd-FE-68q">
                     <rect key="frame" x="44" y="83" width="97" height="30"/>
                     <state key="normal" title="Choose Photo"/>
+                    <connections>
+                        <action selector="doPick:" destination="-1" eventType="touchUpInside" id="NBb-9H-SNp"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQp-KA-YCY">
                     <rect key="frame" x="44" y="163" width="112" height="30"/>
                     <state key="normal" title="Choose Painting"/>
+                    <connections>
+                        <action selector="doPick:" destination="-1" eventType="touchUpInside" id="NOO-eS-3Xp"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

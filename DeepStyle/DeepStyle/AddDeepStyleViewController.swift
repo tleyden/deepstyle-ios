@@ -10,9 +10,13 @@ import UIKit
 
 // TODO: when button tapped, let user choose an image
 
-class AddDeepStyleViewController: UIViewController {
+class AddDeepStyleViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var presenterViewController: PresenterViewController? = nil
+    var photoImage: UIImage? = nil
+    var paintingImage: UIImage? = nil
+    @IBOutlet var choosePhotoButton: UIButton? = nil
+    @IBOutlet var choosePaintingButton: UIButton? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,66 @@ class AddDeepStyleViewController: UIViewController {
         
         
     }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        print("imagePickerController didFinishPickingMediaWithInfo")
+        print(info)
+        print(picker.view.tag)
+        if picker.view.tag == 0 {
+            if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                self.photoImage = image
+            }
+        } else {
+            if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                self.paintingImage = image
+            }
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    
+    @IBAction func doPick (sender:AnyObject!) {
+        
+        // horrible
+        // let src = UIImagePickerControllerSourceType.SavedPhotosAlbum
+        let src = UIImagePickerControllerSourceType.PhotoLibrary
+        let ok = UIImagePickerController.isSourceTypeAvailable(src)
+        if !ok {
+            print("alas")
+            return
+        }
+        
+        let arr = UIImagePickerController.availableMediaTypesForSourceType(src)
+        if arr == nil {
+            print("no available types")
+            return
+        }
+        let picker = UIImagePickerController() // see comments below for reason
+        picker.sourceType = src
+        picker.mediaTypes = arr!
+        picker.delegate = self
+        if sender as? UIButton == choosePhotoButton! {
+            picker.view.tag = 0
+        } else if sender as? UIButton == choosePaintingButton! {
+            picker.view.tag = 1
+        }
+        
+        picker.allowsEditing = false // try true
+        
+        // this will automatically be fullscreen on phone and pad, looks fine
+        // note that for .PhotoLibrary, iPhone app must permit portrait orientation
+        // if we want a popover, on pad, we can do that; just uncomment next line
+        // picker.modalPresentationStyle = .Popover
+        self.presentViewController(picker, animated: true, completion: nil)
+        // ignore:
+        if let pop = picker.popoverPresentationController {
+            let v = sender as! UIView
+            pop.sourceView = v
+            pop.sourceRect = v.bounds
+        }
+        
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
