@@ -18,9 +18,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let accessToken = FBSDKAccessToken.currentAccessToken() {
+            print(accessToken)
+        } else {
+            print("no access token")
+        }
+        
         // Add FB login button
         let loginView : FBSDKLoginButton = FBSDKLoginButton()
         loginView.delegate = self
+        loginView.readPermissions = ["public_profile", "user_friends", "email"]
         self.view.addSubview(loginView)
         loginView.center = self.view.center
         
@@ -45,7 +52,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
         
         let nav = UINavigationController(rootViewController: recentGalleryVewController)
         self.presentViewController(nav, animated: true, completion: nil)
-
+        
+        if let accessToken = FBSDKAccessToken.currentAccessToken() {
+            print(accessToken)
+        } else {
+            print("no access token")
+        }
+        
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
