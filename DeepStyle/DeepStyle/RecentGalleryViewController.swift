@@ -3,8 +3,11 @@
 import UIKit
 
 class RecentGalleryViewController: UITableViewController {
-        
+    
+    var presenterViewController: PresenterViewController? = nil
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -12,8 +15,17 @@ class RecentGalleryViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let logoutButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: "logout:")
+        self.navigationItem.leftBarButtonItem = logoutButton;
+        
     }
 
+    func logout(sender: UIBarButtonItem) {
+        print("logout")
+        presenterViewController?.dismiss()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

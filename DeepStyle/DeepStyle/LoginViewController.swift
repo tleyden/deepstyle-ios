@@ -13,7 +13,7 @@ import FBSDKLoginKit
 // TODO: figure out why using a nib didn't work
 // TODO: figure out why FBSDKAccessToken.currentAccessToken() is always nil when restarting the app
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, PresenterViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +36,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func showRecentGalleryViewController() {
+        
         let recentGalleryVewController = RecentGalleryViewController()
-        self.presentViewController(recentGalleryVewController, animated: true, completion: nil)
+        
+        // register ourselves as the presenter view controller delegate, so we get called back
+        // when this view wants to get rid of itself
+        recentGalleryVewController.presenterViewController = self
+        
+        let nav = UINavigationController(rootViewController: recentGalleryVewController)
+        self.presentViewController(nav, animated: true, completion: nil)
+
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
@@ -47,6 +55,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
         print("loginButtonWillLogin")
         return true
+    }
+    
+    func dismiss() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     /*
