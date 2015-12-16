@@ -1,14 +1,10 @@
-    //
-//  DBHelper.swift
-//  DeepStyle2
-//
-//  Created by Traun Leyden on 12/13/15.
-//  Copyright © 2015 DeepStyle. All rights reserved.
-//
+
 
 import Foundation
 import FBSDKCoreKit
 import FBSDKLoginKit
+
+// All database access should go through this class
 
 class DBHelper {
     
@@ -46,11 +42,19 @@ class DBHelper {
         if push == nil {
             throw DBHelperError.ReplicationInitializationError
         }
+        let pull = database?.createPullReplication(DBHelper.serverDbURL)
+        if pull == nil {
+            throw DBHelperError.ReplicationInitializationError
+        }
+        pull?.customProperties = ["websocket": false]
+        
+        let replicators = [push, pull]
+        for replicator in replicators {
+            replicator?.authenticator = fbAuthenticator
+            replicator?.continuous = true
+            replicator?.start()
+        }
     
-        push?.authenticator = fbAuthenticator
-        push?.continuous = true
-        push?.start()
-                
     }
     
     func createDeepStyleJob(sourceImage: UIImage, styleImage: UIImage) throws -> DeepStyleJob {
@@ -62,6 +66,7 @@ class DBHelper {
         
         let deepStyleJob:DeepStyleJob = DeepStyleJob(forNewDocumentInDatabase: database!)
         deepStyleJob.state = "READY_TO_PROCESS"
+        try deepStyleJob.owner = LoginSession.sharedInstance.getLoggedInUserId()
         deepStyleJob.setValue(DeepStyleJob.docType, ofProperty: "type")
         deepStyleJob.setAttachmentNamed("source_image", withContentType: "image/jpg", content: sourceImageData!)
         deepStyleJob.setAttachmentNamed("style_image", withContentType: "image/jpg", content: styleImageData!)

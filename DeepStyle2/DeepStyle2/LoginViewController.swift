@@ -39,14 +39,37 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        do {
-            try DBHelper.sharedInstance.startReplicationFromFacebookToken()
+        
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
-        } catch {
-            print("Error starting replication: \(error)")
-        }
+            if ((error) != nil)
+            {
+                // Process error
+                print("Error getting facebook ID: \(error)")
+            }
+            else
+            {
+                let userId = result.valueForKey("id") as! String
+                LoginSession.sharedInstance.userId = userId
+                
+                do {
+                    try DBHelper.sharedInstance.startReplicationFromFacebookToken()
+                } catch {
+                    print("Error starting replication: \(error)")
+                }
+                
+            }
+        })
+        
         showRecentGalleryViewController()
     }
+    
+    func returnUserData()
+    {
+        
+    }
+    
     
     func showRecentGalleryViewController() {
         

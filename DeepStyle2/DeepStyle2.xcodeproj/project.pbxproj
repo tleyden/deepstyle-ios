@@ -26,6 +26,7 @@
 		153A39381C1E02D20030AD5D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A39321C1E02D20030AD5D /* Util.swift */; };
 		153A393B1C1E11FF0030AD5D /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A393A1C1E11FF0030AD5D /* DBHelper.swift */; };
 		153A393F1C1E1C0B0030AD5D /* DeepStyleJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A393E1C1E1C0B0030AD5D /* DeepStyleJob.swift */; };
+		153A39411C213C650030AD5D /* LoginSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A39401C213C650030AD5D /* LoginSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		153A39391C1E04E00030AD5D /* Couchbase-Lite-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Couchbase-Lite-Bridging-Header.h"; sourceTree = "<group>"; };
 		153A393A1C1E11FF0030AD5D /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		153A393E1C1E1C0B0030AD5D /* DeepStyleJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepStyleJob.swift; sourceTree = "<group>"; };
+		153A39401C213C650030AD5D /* LoginSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				153A39391C1E04E00030AD5D /* Couchbase-Lite-Bridging-Header.h */,
 				153A393A1C1E11FF0030AD5D /* DBHelper.swift */,
 				153A393E1C1E1C0B0030AD5D /* DeepStyleJob.swift */,
+				153A39401C213C650030AD5D /* LoginSession.swift */,
 			);
 			path = DeepStyle2;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			files = (
 				153A39361C1E02D20030AD5D /* RecentGalleryViewController.swift in Sources */,
 				153A393B1C1E11FF0030AD5D /* DBHelper.swift in Sources */,
+				153A39411C213C650030AD5D /* LoginSession.swift in Sources */,
 				153A39351C1E02D20030AD5D /* LoginViewController.swift in Sources */,
 				153A39381C1E02D20030AD5D /* Util.swift in Sources */,
 				153A393F1C1E1C0B0030AD5D /* DeepStyleJob.swift in Sources */,
