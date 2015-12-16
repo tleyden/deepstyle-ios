@@ -27,6 +27,8 @@
 		153A393B1C1E11FF0030AD5D /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A393A1C1E11FF0030AD5D /* DBHelper.swift */; };
 		153A393F1C1E1C0B0030AD5D /* DeepStyleJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A393E1C1E1C0B0030AD5D /* DeepStyleJob.swift */; };
 		153A39411C213C650030AD5D /* LoginSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A39401C213C650030AD5D /* LoginSession.swift */; };
+		153A39441C2141B90030AD5D /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A39421C2141B90030AD5D /* GalleryViewController.swift */; };
+		153A39451C2141B90030AD5D /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153A39431C2141B90030AD5D /* GalleryViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		153A393A1C1E11FF0030AD5D /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		153A393E1C1E1C0B0030AD5D /* DeepStyleJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepStyleJob.swift; sourceTree = "<group>"; };
 		153A39401C213C650030AD5D /* LoginSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSession.swift; sourceTree = "<group>"; };
+		153A39421C2141B90030AD5D /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		153A39431C2141B90030AD5D /* GalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,8 @@
 				153A393A1C1E11FF0030AD5D /* DBHelper.swift */,
 				153A393E1C1E1C0B0030AD5D /* DeepStyleJob.swift */,
 				153A39401C213C650030AD5D /* LoginSession.swift */,
+				153A39421C2141B90030AD5D /* GalleryViewController.swift */,
+				153A39431C2141B90030AD5D /* GalleryViewController.xib */,
 			);
 			path = DeepStyle2;
 			sourceTree = "<group>";
@@ -230,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				153A39371C1E02D20030AD5D /* RecentGalleryViewController.xib in Resources */,
+				153A39451C2141B90030AD5D /* GalleryViewController.xib in Resources */,
 				153A39341C1E02D20030AD5D /* AddDeepStyleViewController.xib in Resources */,
 				153A39031C1DFF240030AD5D /* Assets.xcassets in Resources */,
 			);
@@ -255,6 +262,7 @@
 				153A39351C1E02D20030AD5D /* LoginViewController.swift in Sources */,
 				153A39381C1E02D20030AD5D /* Util.swift in Sources */,
 				153A393F1C1E1C0B0030AD5D /* DeepStyleJob.swift in Sources */,
+				153A39441C2141B90030AD5D /* GalleryViewController.swift in Sources */,
 				153A39331C1E02D20030AD5D /* AddDeepStyleViewController.swift in Sources */,
 				153A38FC1C1DFF240030AD5D /* AppDelegate.swift in Sources */,
 			);

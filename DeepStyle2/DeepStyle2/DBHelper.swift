@@ -26,6 +26,31 @@ class DBHelper {
             print("Error initializing database: \(error)")
         }
         CBLManager.enableLogging("SyncVerbose")
+        installViews()
+    }
+    
+    func installViews() {
+        
+        let recentJobs = database?.viewNamed("recentJobs")
+        
+        recentJobs?.setMapBlock(
+            {
+                (doc, emit) in
+                /*if let dateObj: AnyObject = doc["created_at"] {
+                    if let date = dateObj as? String {
+                        emit(date, doc)
+                    }
+                }*/
+                if let docType: AnyObject = doc["type"] {
+                    if docType as! String == "job" {
+                        emit(doc, doc)
+                    }
+                }
+            },
+            reduceBlock: nil,
+            version: "1"
+        )
+        
     }
     
     func startReplicationFromFacebookToken() throws {
