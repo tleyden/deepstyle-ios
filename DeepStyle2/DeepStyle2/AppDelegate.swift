@@ -8,28 +8,11 @@ import FBSDKLoginKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    /*
-    // The local DB name
-    let databaseName = "deepstyle"
-    
-    // The remote database URL to sync with.
-    let serverDbURL = NSURL(string: "http://demo.couchbasemobile.com:4984/deepstyle/")!
-    
-    var database: CBLDatabase? = nil
-    
-    override init() {
-        DBHelper.sharedInstance()
-        
-        do {
-            try database = CBLManager.sharedInstance().databaseNamed(databaseName)
-        }
-        catch {
-            print("Error initializing database: \(error)")
-        }
-    }
-    */
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         if DBHelper.sharedInstance.database == nil {
             return false
@@ -40,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let loginViewController =  LoginViewController()
         self.window!.rootViewController = loginViewController
         self.window!.makeKeyAndVisible()
-        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         return true
     }
 
