@@ -18,15 +18,17 @@ class AddDeepStyleViewController: UIViewController, UIImagePickerControllerDeleg
     
     var photoImage: UIImage? = nil
     var paintingImage: UIImage? = nil
+    
     @IBOutlet var choosePhotoButton: UIButton? = nil
     @IBOutlet var choosePaintingButton: UIButton? = nil
+    @IBOutlet var photoImageView: UIImageView? = nil
+    @IBOutlet var paintingImageView: UIImageView? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel:")
         self.navigationItem.leftBarButtonItem = cancelButton;
-        
         
     }
 
@@ -52,10 +54,12 @@ class AddDeepStyleViewController: UIViewController, UIImagePickerControllerDeleg
         if picker.view.tag == 0 {
             if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 self.photoImage = image
+                self.photoImageView!.image = image
             }
         } else {
             if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 self.paintingImage = image
+                self.paintingImageView!.image = image
             }
         }
         self.dismissViewControllerAnimated(true, completion: nil)
