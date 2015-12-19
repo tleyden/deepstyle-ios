@@ -1,16 +1,9 @@
-//
-//  LoginViewController.swift
-//  DeepStyle
-//
-//  Created by Traun Leyden on 12/12/15.
-//  Copyright © 2015 DeepStyle. All rights reserved.
-//
 
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-// TODO: figure out why using a nib didn't work
+// TODO: figure out why using a nib didn't work -- button was not centered
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, PresenterViewController {
 
@@ -30,28 +23,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
             let facebookUserId = LoginSession.sharedInstance.lookupSavedUserIdForAccessToken(accessToken.tokenString)
             LoginSession.sharedInstance.userId = facebookUserId
             self.showNextButton()
-            
-            /*print("accessToken: \(accessToken)")
-            
-            let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-                
-                if ((error) != nil)
-                {
-                    showNextButton()
-                    
-                }
-                else
-                {
-                    let userId = result.valueForKey("id") as! String
-                    LoginSession.sharedInstance.userId = userId
-                    
-                    // self.showNextButton()
-                    self.showRecentGalleryViewController()
-                    
-                }
-            })*/
-
             
         }
         
