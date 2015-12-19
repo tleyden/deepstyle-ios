@@ -26,38 +26,39 @@ class AddDeepStyleViewController: UIViewController, UIImagePickerControllerDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel:")
         self.navigationItem.leftBarButtonItem = cancelButton;
-        
     }
 
     func cancel(sender: UIBarButtonItem) {
         presenterViewController?.dismiss()
     }
     
+    func showError(error: ErrorType) {
+        
+        print("Error: \(error)")
+        let alert = UIAlertController(
+            title: "Alert",
+            message: "Oops! \(error)",
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    
+    }
+    
     @IBAction func create(sender: AnyObject) {
         
         if let photo = photoImage, painting = paintingImage {
-            
             do {
                 try sourceAndStyleReceiver?.dismissWithImages(photo, styleImage: painting)
             } catch {
-                print("Error creating deepstylejob: \(error)")
-                let alert = UIAlertController(
-                    title: "Alert",
-                    message: "Oops! \(error)",
-                    preferredStyle: UIAlertControllerStyle.Alert
-                )
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                showError(error)
             }
             
-            
         } else {
-            print("Either photo or painting were nil")
+            showError(AddJobError.MissingImage)
         }
-        
         
     }
     
@@ -83,8 +84,6 @@ class AddDeepStyleViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBAction func doPick (sender:AnyObject!) {
         
-        // horrible
-        // let src = UIImagePickerControllerSourceType.SavedPhotosAlbum
         let src = UIImagePickerControllerSourceType.PhotoLibrary
         let ok = UIImagePickerController.isSourceTypeAvailable(src)
         if !ok {
@@ -140,4 +139,8 @@ class AddDeepStyleViewController: UIViewController, UIImagePickerControllerDeleg
     }
     */
 
+}
+
+enum AddJobError: ErrorType {
+    case MissingImage
 }

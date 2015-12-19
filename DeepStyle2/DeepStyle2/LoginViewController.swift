@@ -24,6 +24,38 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
         self.view.addSubview(loginView)
         loginView.center = self.view.center
         
+        if let accessToken = FBSDKAccessToken.currentAccessToken() {
+            
+            print("accessToken: \(accessToken)")
+            
+            let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+                
+                if ((error) != nil)
+                {
+                    // Process error
+                    print("Error getting facebook ID: \(error)")
+                }
+                else
+                {
+                    let userId = result.valueForKey("id") as! String
+                    LoginSession.sharedInstance.userId = userId
+                    
+                    // self.showNextButton()
+                    self.showRecentGalleryViewController()
+                    
+                }
+            })
+
+            
+        }
+        
+        
+        
+    }
+    
+    func showNextButton() {
+        
         // add a button to skip to the next screen
         // TODO: should happen automatically, may need to rework view controllers for this
         let nextScreenButton = UIButton()
