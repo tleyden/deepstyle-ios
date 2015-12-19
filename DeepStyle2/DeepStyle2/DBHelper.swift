@@ -99,6 +99,22 @@ class DBHelper {
         return deepStyleJob
         
     }
+    
+    // Local Document KV store lookup.
+    func lookupLocalDocKV(key: String) -> String {
+        // database.existingLocalDocumentWithID: (NSString*)localDocID;
+        let localDocJson = database?.existingLocalDocumentWithID(key)
+        print("localDocJson: \(localDocJson)")
+        let unwrapped = localDocJson!
+        let optional = unwrapped["value"]
+        return optional! as! String
+    }
+    
+    func setLocalDocKV(key: String, value: String) throws {
+        let properties = ["value": value]
+        try database?.putLocalDocument(properties, withID: key)
+    }
+    
 
     
 }

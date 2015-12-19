@@ -24,17 +24,22 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
         self.view.addSubview(loginView)
         loginView.center = self.view.center
         
+        // if we're logged in, fetch the user id from storage and then show the gallery
         if let accessToken = FBSDKAccessToken.currentAccessToken() {
             
-            print("accessToken: \(accessToken)")
+            let facebookUserId = LoginSession.sharedInstance.lookupSavedUserIdForAccessToken(accessToken.tokenString)
+            LoginSession.sharedInstance.userId = facebookUserId
+            self.showNextButton()
+            
+            /*print("accessToken: \(accessToken)")
             
             let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
                 
                 if ((error) != nil)
                 {
-                    // Process error
-                    print("Error getting facebook ID: \(error)")
+                    showNextButton()
+                    
                 }
                 else
                 {
@@ -45,7 +50,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
                     self.showRecentGalleryViewController()
                     
                 }
-            })
+            })*/
 
             
         }
@@ -80,18 +85,22 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
             
             if ((error) != nil)
             {
-                // Process error
-                print("Error getting facebook ID: \(error)")
+                self.showError("Oops!  Error getting facebook ID", error: error)
             }
             else
             {
                 let userId = result.valueForKey("id") as! String
                 LoginSession.sharedInstance.userId = userId
+                do {
+                    try LoginSession.sharedInstance.saveUserIdForCurrentFBAccessToken(userId)
+                } catch {
+                    self.showError("Oops!  Error saving user ID", error: error)
+                }
                 
                 do {
                     try DBHelper.sharedInstance.startReplicationFromFacebookToken()
                 } catch {
-                    print("Error starting replication: \(error)")
+                    self.showError("Oops!  Error starting replication", error: error)
                 }
                 
             }
@@ -105,6 +114,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
         
     }
     
+    
+    func showError(msg: String, error: ErrorType) {
+        
+        print("Error: \(msg) - \(error)")
+        let alert = UIAlertController(
+            title: "Alert",
+            message: "Oops! \(msg) - \(error)",
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
     
     func showRecentGalleryViewController() {
         
