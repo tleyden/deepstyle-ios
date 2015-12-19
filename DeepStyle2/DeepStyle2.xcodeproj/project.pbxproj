@@ -21,8 +21,6 @@
 		153A39331C1E02D20030AD5D /* AddDeepStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A392D1C1E02D20030AD5D /* AddDeepStyleViewController.swift */; };
 		153A39341C1E02D20030AD5D /* AddDeepStyleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153A392E1C1E02D20030AD5D /* AddDeepStyleViewController.xib */; };
 		153A39351C1E02D20030AD5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A392F1C1E02D20030AD5D /* LoginViewController.swift */; };
-		153A39361C1E02D20030AD5D /* RecentGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A39301C1E02D20030AD5D /* RecentGalleryViewController.swift */; };
-		153A39371C1E02D20030AD5D /* RecentGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153A39311C1E02D20030AD5D /* RecentGalleryViewController.xib */; };
 		153A39381C1E02D20030AD5D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A39321C1E02D20030AD5D /* Util.swift */; };
 		153A393B1C1E11FF0030AD5D /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A393A1C1E11FF0030AD5D /* DBHelper.swift */; };
 		153A393F1C1E1C0B0030AD5D /* DeepStyleJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A393E1C1E1C0B0030AD5D /* DeepStyleJob.swift */; };
@@ -60,8 +58,6 @@
 		153A392D1C1E02D20030AD5D /* AddDeepStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeepStyleViewController.swift; sourceTree = "<group>"; };
 		153A392E1C1E02D20030AD5D /* AddDeepStyleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeepStyleViewController.xib; sourceTree = "<group>"; };
 		153A392F1C1E02D20030AD5D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		153A39301C1E02D20030AD5D /* RecentGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentGalleryViewController.swift; sourceTree = "<group>"; };
-		153A39311C1E02D20030AD5D /* RecentGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentGalleryViewController.xib; sourceTree = "<group>"; };
 		153A39321C1E02D20030AD5D /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		153A39391C1E04E00030AD5D /* Couchbase-Lite-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Couchbase-Lite-Bridging-Header.h"; sourceTree = "<group>"; };
 		153A393A1C1E11FF0030AD5D /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
@@ -130,8 +126,6 @@
 				153A392D1C1E02D20030AD5D /* AddDeepStyleViewController.swift */,
 				153A392E1C1E02D20030AD5D /* AddDeepStyleViewController.xib */,
 				153A392F1C1E02D20030AD5D /* LoginViewController.swift */,
-				153A39301C1E02D20030AD5D /* RecentGalleryViewController.swift */,
-				153A39311C1E02D20030AD5D /* RecentGalleryViewController.xib */,
 				153A39321C1E02D20030AD5D /* Util.swift */,
 				153A39021C1DFF240030AD5D /* Assets.xcassets */,
 				153A39071C1DFF240030AD5D /* Info.plist */,
@@ -235,7 +229,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				153A39371C1E02D20030AD5D /* RecentGalleryViewController.xib in Resources */,
 				153A39451C2141B90030AD5D /* GalleryViewController.xib in Resources */,
 				153A39341C1E02D20030AD5D /* AddDeepStyleViewController.xib in Resources */,
 				153A39031C1DFF240030AD5D /* Assets.xcassets in Resources */,
@@ -256,7 +249,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				153A39361C1E02D20030AD5D /* RecentGalleryViewController.swift in Sources */,
 				153A393B1C1E11FF0030AD5D /* DBHelper.swift in Sources */,
 				153A39411C213C650030AD5D /* LoginSession.swift in Sources */,
 				153A39351C1E02D20030AD5D /* LoginViewController.swift in Sources */,
@@ -447,6 +439,7 @@
 				153A39171C1DFF240030AD5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		153A39181C1DFF240030AD5D /* Build configuration list for PBXNativeTarget "DeepStyle2Tests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +448,7 @@
 				153A391A1C1DFF240030AD5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

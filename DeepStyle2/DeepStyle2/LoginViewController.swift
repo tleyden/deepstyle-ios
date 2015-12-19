@@ -18,18 +18,22 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let accessToken = FBSDKAccessToken.currentAccessToken() {
-            print(accessToken)
-        } else {
-            print("no access token")
-        }
-        
         // Add FB login button
         let loginView : FBSDKLoginButton = FBSDKLoginButton()
         loginView.delegate = self
         loginView.readPermissions = ["public_profile", "user_friends", "email"]
         self.view.addSubview(loginView)
         loginView.center = self.view.center
+        
+        // add a button to skip to the next screen
+        // TODO: should happen automatically, may need to rework view controllers for this 
+        let nextScreenButton = UIButton()
+        nextScreenButton.setTitle("Next", forState: .Normal)
+        nextScreenButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        nextScreenButton.frame = CGRectMake(0, 0, 50, 25)
+        self.view.addSubview(nextScreenButton)
+        nextScreenButton.center = CGPointMake(self.view.center.x, self.view.center.y + 50)
+        nextScreenButton.addTarget(self, action: "showRecentGalleryViewController", forControlEvents: .TouchUpInside)
         
     }
 
