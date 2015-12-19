@@ -30,8 +30,6 @@ class RecentGalleryViewController: UITableViewController, PresenterViewControlle
         presenterViewController?.dismiss()
     }
     
-    
-    
     func addDeepStyle(sender: UIBarButtonItem) {
         
         let addDeepStyle = AddDeepStyleViewController()

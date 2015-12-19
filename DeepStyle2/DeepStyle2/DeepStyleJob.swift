@@ -12,8 +12,8 @@ class DeepStyleJob: CBLModel {
     
     static let docType = "job"
     
-    @NSManaged var state: NSString?
-    @NSManaged var owner: NSString?
+    @NSManaged var state: String?
+    @NSManaged var owner: String?
     
     
 }

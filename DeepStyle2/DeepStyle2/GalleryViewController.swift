@@ -2,11 +2,13 @@
 
 import UIKit
 
-class GalleryViewController: UIViewController, UITableViewDelegate, CBLUITableDelegate {
+class GalleryViewController: UIViewController, UITableViewDelegate, CBLUITableDelegate, PresenterViewController, SourceAndStyleImageReciever {
 
     @IBOutlet weak var tableView: UITableView!  //<<-- TableView Outlet
     
     @IBOutlet var dataSource: CBLUITableSource!
+    
+    var presenterViewController: PresenterViewController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,12 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBLUITableDe
         self.dataSource.query = query
         self.dataSource.labelProperty = "text"    // Document property to display in the cell label
         
+        let logoutButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: "logout:")
+        self.navigationItem.leftBarButtonItem = logoutButton;
+        
+        let addDeepStyleButton = UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.Plain, target: self, action: "addDeepStyle:")
+        self.navigationItem.rightBarButtonItem = addDeepStyleButton;
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,9 +37,61 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBLUITableDe
         // Dispose of any resources that can be recreated.
     }
     
+    func logout(sender: UIBarButtonItem) {
+        print("logout")
+        presenterViewController?.dismiss()
+    }
+    
+    func addDeepStyle(sender: UIBarButtonItem) {
+        
+        let addDeepStyle = AddDeepStyleViewController()
+        
+        // register ourselves as the presenter view controller delegate, so we get called back
+        // when this view wants to get rid of itself
+        addDeepStyle.presenterViewController = self
+        
+        // get called back with UIImages that the user chose
+        addDeepStyle.sourceAndStyleReceiver = self
+        
+        let nav = UINavigationController(rootViewController: addDeepStyle)
+        self.presentViewController(nav, animated: true, completion: nil)
+        
+    }
+    
+    func dismiss() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func dismissWithImages(sourceImage: UIImage, styleImage: UIImage) {
+        print("todo, process images")
+        
+        do {
+            let deepStyleJob = try DBHelper.sharedInstance.createDeepStyleJob(sourceImage, styleImage: styleImage)
+            print("DeepStyleJob: \(deepStyleJob)")
+        } catch {
+            print("Error creating deepstylejob: \(error)")
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     // Customize the appearance of table view cells.
     func couchTableSource(source: CBLUITableSource, willUseCell cell: UITableViewCell, forRow row: CBLQueryRow) {
         cell.textLabel!.font = UIFont(name: "Helvetica", size: 18.0)
+        let doc = row.document
+        do {
+            try print("revs: \(doc?.getRevisionHistory())")
+        } catch {
+            print("error: \(error)")
+        }
+        
+        let job = DeepStyleJob(forDocument: doc!)
+        print("job id: \(job.document?.documentID) state: \(job.state)")
+        cell.textLabel!.text = job.state
+        let styleImageAttachment = job.attachmentNamed("style_image")
+        let styleImage = UIImage(data: styleImageAttachment!.content!)
+        cell.imageView!.image = styleImage
+        
     }
 
 

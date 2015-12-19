@@ -77,7 +77,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
         
         // register ourselves as the presenter view controller delegate, so we get called back
         // when this view wants to get rid of itself
-        // TODO!!! recentGalleryVewController.presenterViewController = self
+        recentGalleryVewController.presenterViewController = self
         
         let nav = UINavigationController(rootViewController: recentGalleryVewController)
         self.presentViewController(nav, animated: true, completion: nil)
