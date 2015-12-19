@@ -24,6 +24,18 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBLUITableDe
         self.dataSource.query = query
         self.dataSource.labelProperty = "text"    // Document property to display in the cell label
         
+        
+        do {
+            print("num docs in db \(database!.documentCount)")
+            let queryEnum = try query.run()
+            while let nextRow = queryEnum.nextRow() {
+                print("nextRow: \(nextRow) doc: \(nextRow.document)")
+            }
+        } catch {
+            print("error running query: \(error)")
+        }
+        
+        
         let logoutButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: "logout:")
         self.navigationItem.leftBarButtonItem = logoutButton;
         
@@ -62,17 +74,13 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBLUITableDe
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func dismissWithImages(sourceImage: UIImage, styleImage: UIImage) {
+    func dismissWithImages(sourceImage: UIImage, styleImage: UIImage) throws {
         print("todo, process images")
         
-        do {
-            let deepStyleJob = try DBHelper.sharedInstance.createDeepStyleJob(sourceImage, styleImage: styleImage)
-            print("DeepStyleJob: \(deepStyleJob)")
-        } catch {
-            print("Error creating deepstylejob: \(error)")
-        }
-        
+        let deepStyleJob = try DBHelper.sharedInstance.createDeepStyleJob(sourceImage, styleImage: styleImage)
+        print("DeepStyleJob: \(deepStyleJob)")
         self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
     // Customize the appearance of table view cells.

@@ -11,7 +11,6 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 // TODO: figure out why using a nib didn't work
-// TODO: figure out why FBSDKAccessToken.currentAccessToken() is always nil when restarting the app
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, PresenterViewController {
 
@@ -26,7 +25,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
         loginView.center = self.view.center
         
         // add a button to skip to the next screen
-        // TODO: should happen automatically, may need to rework view controllers for this 
+        // TODO: should happen automatically, may need to rework view controllers for this
         let nextScreenButton = UIButton()
         nextScreenButton.setTitle("Next", forState: .Normal)
         nextScreenButton.setTitleColor(UIColor.blueColor(), forState: .Normal)

@@ -39,7 +39,21 @@ class AddDeepStyleViewController: UIViewController, UIImagePickerControllerDeleg
     @IBAction func create(sender: AnyObject) {
         
         if let photo = photoImage, painting = paintingImage {
-            sourceAndStyleReceiver?.dismissWithImages(photo, styleImage: painting)
+            
+            do {
+                try sourceAndStyleReceiver?.dismissWithImages(photo, styleImage: painting)
+            } catch {
+                print("Error creating deepstylejob: \(error)")
+                let alert = UIAlertController(
+                    title: "Alert",
+                    message: "Oops! \(error)",
+                    preferredStyle: UIAlertControllerStyle.Alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            
+            
         } else {
             print("Either photo or painting were nil")
         }
@@ -62,6 +76,7 @@ class AddDeepStyleViewController: UIViewController, UIImagePickerControllerDeleg
                 self.paintingImageView!.image = image
             }
         }
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 

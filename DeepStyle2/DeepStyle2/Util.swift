@@ -14,5 +14,5 @@ protocol PresenterViewController {
 }
 
 protocol SourceAndStyleImageReciever {
-    func dismissWithImages(sourceImage: UIImage, styleImage: UIImage)
+    func dismissWithImages(sourceImage: UIImage, styleImage: UIImage) throws
 }
