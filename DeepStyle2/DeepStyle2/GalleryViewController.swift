@@ -86,25 +86,9 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBUITableDel
         
     }
     
-    // - (UITableViewCell *)couchTableSource:(CBLUITableSource*)source
-    // cellForRowAtIndexPath:(NSIndexPath *)indexPath;
     func couchTableSource(source: CBUITableSource, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("GalleryTableViewCell", forIndexPath: indexPath) as! GalleryTableViewCell
-        // let styleImageAttachment = job.attachmentNamed("style_image")
-        // let styleImage = UIImage(data: styleImageAttachment!.content!)
-        // cell.paintingImageView?.image = styleImage
-        
         return cell
-        
-        /*let cellIdentifier = "GalleryViewCell"
-        if let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) {
-            return cell
-        } else {
-            let cell = GalleryTableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
-            return cell
-        }*/
-        
     }
     
     // Customize the appearance of table view cells.
