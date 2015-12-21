@@ -20,7 +20,11 @@ class DBHelper {
     
     init() {
         do {
+            
+            CBLManager.sharedInstance().storageType = kCBLForestDBStorage
+                        
             try database = CBLManager.sharedInstance().databaseNamed(DBHelper.databaseName)
+            
         }
         catch {
             print("Error initializing database: \(error)")
