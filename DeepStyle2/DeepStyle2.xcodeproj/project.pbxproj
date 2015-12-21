@@ -30,6 +30,8 @@
 		157612CF1C27743300F26530 /* GalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157612CD1C27743300F26530 /* GalleryTableViewCell.swift */; };
 		157612D01C27743300F26530 /* GalleryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 157612CE1C27743300F26530 /* GalleryTableViewCell.xib */; };
 		157612D51C277F6300F26530 /* CBUITableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 157612D41C277F6300F26530 /* CBUITableSource.m */; };
+		157612E31C278F4200F26530 /* libCBLForestDBStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 157612E21C278F4200F26530 /* libCBLForestDBStorage.a */; };
+		157612E51C278F7300F26530 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 157612E41C278F7300F26530 /* libc++.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		157612CE1C27743300F26530 /* GalleryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryTableViewCell.xib; sourceTree = "<group>"; };
 		157612D41C277F6300F26530 /* CBUITableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITableSource.m; sourceTree = "<group>"; };
 		157612D61C277F7700F26530 /* CBUITableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITableSource.h; sourceTree = "<group>"; };
+		157612E21C278F4200F26530 /* libCBLForestDBStorage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCBLForestDBStorage.a; sourceTree = "<group>"; };
+		157612E41C278F7300F26530 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +83,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				157612E51C278F7300F26530 /* libc++.tbd in Frameworks */,
 				153A39281C1E007F0030AD5D /* libz.tbd in Frameworks */,
+				157612E31C278F4200F26530 /* libCBLForestDBStorage.a in Frameworks */,
 				153A39261C1E00780030AD5D /* libsqlite3.tbd in Frameworks */,
 				153A39241C1E006F0030AD5D /* SystemConfiguration.framework in Frameworks */,
 				153A39221C1E00660030AD5D /* Security.framework in Frameworks */,
@@ -106,6 +112,8 @@
 				153A392B1C1E02990030AD5D /* FBSDKLoginKit.framework */,
 				153A39291C1E02760030AD5D /* FBSDKCoreKit.framework */,
 				153A39271C1E007F0030AD5D /* libz.tbd */,
+				157612E41C278F7300F26530 /* libc++.tbd */,
+				157612E21C278F4200F26530 /* libCBLForestDBStorage.a */,
 				153A39251C1E00780030AD5D /* libsqlite3.tbd */,
 				153A39231C1E006F0030AD5D /* SystemConfiguration.framework */,
 				153A39211C1E00660030AD5D /* Security.framework */,
@@ -386,6 +394,10 @@
 				);
 				INFOPLIST_FILE = DeepStyle2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = co.deepstyle.DeepStyle2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -403,6 +415,10 @@
 				);
 				INFOPLIST_FILE = DeepStyle2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = co.deepstyle.DeepStyle2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
