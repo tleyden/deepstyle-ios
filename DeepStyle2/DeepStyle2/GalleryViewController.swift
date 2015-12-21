@@ -2,11 +2,11 @@
 
 import UIKit
 
-class GalleryViewController: UIViewController, UITableViewDelegate, CBLUITableDelegate, PresenterViewController, SourceAndStyleImageReciever {
+class GalleryViewController: UIViewController, UITableViewDelegate, CBUITableDelegate, PresenterViewController, SourceAndStyleImageReciever {
 
     @IBOutlet weak var tableView: UITableView!  //<<-- TableView Outlet
     
-    @IBOutlet var dataSource: CBLUITableSource!
+    @IBOutlet var dataSource: CBUITableSource!
     
     var presenterViewController: PresenterViewController? = nil
     
@@ -41,6 +41,9 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBLUITableDe
         
         let addDeepStyleButton = UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.Plain, target: self, action: "addDeepStyle:")
         self.navigationItem.rightBarButtonItem = addDeepStyleButton;
+        
+        self.tableView.registerNib(UINib(nibName: "GalleryTableViewCell", bundle: nil), forCellReuseIdentifier: "GalleryTableViewCell")
+        
         
     }
 
@@ -83,8 +86,33 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBLUITableDe
         
     }
     
+    // - (UITableViewCell *)couchTableSource:(CBLUITableSource*)source
+    // cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+    func couchTableSource(source: CBUITableSource, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("GalleryTableViewCell", forIndexPath: indexPath) as! GalleryTableViewCell
+        // let styleImageAttachment = job.attachmentNamed("style_image")
+        // let styleImage = UIImage(data: styleImageAttachment!.content!)
+        // cell.paintingImageView?.image = styleImage
+        
+        return cell
+        
+        /*let cellIdentifier = "GalleryViewCell"
+        if let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) {
+            return cell
+        } else {
+            let cell = GalleryTableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+            return cell
+        }*/
+        
+    }
+    
     // Customize the appearance of table view cells.
-    func couchTableSource(source: CBLUITableSource, willUseCell cell: UITableViewCell, forRow row: CBLQueryRow) {
+    func couchTableSource(source: CBUITableSource, willUseCell cell: UITableViewCell, forRow row: CBLQueryRow) {
+        
+        let galleryCell = cell as! GalleryTableViewCell
+        
+        print("cell: \(galleryCell)")
         cell.textLabel!.font = UIFont(name: "Helvetica", size: 18.0)
         let doc = row.document
         do {
@@ -95,13 +123,16 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBLUITableDe
         
         let job = DeepStyleJob(forDocument: doc!)
         print("job id: \(job.document?.documentID) state: \(job.state)")
-        cell.textLabel!.text = job.state
         let styleImageAttachment = job.attachmentNamed("style_image")
         let styleImage = UIImage(data: styleImageAttachment!.content!)
-        cell.imageView!.image = styleImage
+        galleryCell.paintingImageView!.image = styleImage
+
         
     }
-
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 87.5
+    }
 
     /*
     // MARK: - Navigation

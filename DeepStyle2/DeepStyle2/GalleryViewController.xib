@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GalleryViewController" customModule="DeepStyle2" customModuleProvider="target">
             <connections>
                 <outlet property="dataSource" destination="Yvy-Ay-66T" id="9Ed-Ak-3z6"/>
+                <outlet property="tableView" destination="H6I-mk-Zoz" id="oDG-Il-QjL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,7 +28,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
-        <customObject id="Yvy-Ay-66T" customClass="CBLUITableSource">
+        <customObject id="Yvy-Ay-66T" customClass="CBUITableSource">
             <connections>
                 <outlet property="tableView" destination="H6I-mk-Zoz" id="eIP-Gt-osF"/>
             </connections>

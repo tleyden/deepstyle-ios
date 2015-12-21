@@ -10,5 +10,6 @@
 #define Couchbase_Lite_Bridging_Header_h
 
 #import <CouchbaseLite/CouchbaseLite.h>
+#import "CBUITableSource.h"
 
 #endif /* Couchbase_Lite_Bridging_Header_h */

@@ -27,6 +27,9 @@
 		153A39411C213C650030AD5D /* LoginSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A39401C213C650030AD5D /* LoginSession.swift */; };
 		153A39441C2141B90030AD5D /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A39421C2141B90030AD5D /* GalleryViewController.swift */; };
 		153A39451C2141B90030AD5D /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153A39431C2141B90030AD5D /* GalleryViewController.xib */; };
+		157612CF1C27743300F26530 /* GalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157612CD1C27743300F26530 /* GalleryTableViewCell.swift */; };
+		157612D01C27743300F26530 /* GalleryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 157612CE1C27743300F26530 /* GalleryTableViewCell.xib */; };
+		157612D51C277F6300F26530 /* CBUITableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 157612D41C277F6300F26530 /* CBUITableSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,10 @@
 		153A39401C213C650030AD5D /* LoginSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSession.swift; sourceTree = "<group>"; };
 		153A39421C2141B90030AD5D /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		153A39431C2141B90030AD5D /* GalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
+		157612CD1C27743300F26530 /* GalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryTableViewCell.swift; sourceTree = "<group>"; };
+		157612CE1C27743300F26530 /* GalleryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryTableViewCell.xib; sourceTree = "<group>"; };
+		157612D41C277F6300F26530 /* CBUITableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITableSource.m; sourceTree = "<group>"; };
+		157612D61C277F7700F26530 /* CBUITableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITableSource.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +142,10 @@
 				153A39401C213C650030AD5D /* LoginSession.swift */,
 				153A39421C2141B90030AD5D /* GalleryViewController.swift */,
 				153A39431C2141B90030AD5D /* GalleryViewController.xib */,
+				157612CD1C27743300F26530 /* GalleryTableViewCell.swift */,
+				157612CE1C27743300F26530 /* GalleryTableViewCell.xib */,
+				157612D41C277F6300F26530 /* CBUITableSource.m */,
+				157612D61C277F7700F26530 /* CBUITableSource.h */,
 			);
 			path = DeepStyle2;
 			sourceTree = "<group>";
@@ -229,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				157612D01C27743300F26530 /* GalleryTableViewCell.xib in Resources */,
 				153A39451C2141B90030AD5D /* GalleryViewController.xib in Resources */,
 				153A39341C1E02D20030AD5D /* AddDeepStyleViewController.xib in Resources */,
 				153A39031C1DFF240030AD5D /* Assets.xcassets in Resources */,
@@ -251,11 +263,13 @@
 			files = (
 				153A393B1C1E11FF0030AD5D /* DBHelper.swift in Sources */,
 				153A39411C213C650030AD5D /* LoginSession.swift in Sources */,
+				157612CF1C27743300F26530 /* GalleryTableViewCell.swift in Sources */,
 				153A39351C1E02D20030AD5D /* LoginViewController.swift in Sources */,
 				153A39381C1E02D20030AD5D /* Util.swift in Sources */,
 				153A393F1C1E1C0B0030AD5D /* DeepStyleJob.swift in Sources */,
 				153A39441C2141B90030AD5D /* GalleryViewController.swift in Sources */,
 				153A39331C1E02D20030AD5D /* AddDeepStyleViewController.swift in Sources */,
+				157612D51C277F6300F26530 /* CBUITableSource.m in Sources */,
 				153A38FC1C1DFF240030AD5D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

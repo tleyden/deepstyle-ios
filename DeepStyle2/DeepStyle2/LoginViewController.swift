@@ -26,8 +26,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
             
         }
         
-        
-        
     }
     
     func showNextButton() {
