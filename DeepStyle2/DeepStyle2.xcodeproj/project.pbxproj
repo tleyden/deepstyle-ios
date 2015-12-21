@@ -32,6 +32,8 @@
 		157612D51C277F6300F26530 /* CBUITableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 157612D41C277F6300F26530 /* CBUITableSource.m */; };
 		157612E31C278F4200F26530 /* libCBLForestDBStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 157612E21C278F4200F26530 /* libCBLForestDBStorage.a */; };
 		157612E51C278F7300F26530 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 157612E41C278F7300F26530 /* libc++.tbd */; };
+		157612E81C287C3F00F26530 /* DeepStyleJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157612E61C287C3F00F26530 /* DeepStyleJobViewController.swift */; };
+		157612E91C287C3F00F26530 /* DeepStyleJobViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 157612E71C287C3F00F26530 /* DeepStyleJobViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		157612D61C277F7700F26530 /* CBUITableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITableSource.h; sourceTree = "<group>"; };
 		157612E21C278F4200F26530 /* libCBLForestDBStorage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCBLForestDBStorage.a; sourceTree = "<group>"; };
 		157612E41C278F7300F26530 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		157612E61C287C3F00F26530 /* DeepStyleJobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepStyleJobViewController.swift; sourceTree = "<group>"; };
+		157612E71C287C3F00F26530 /* DeepStyleJobViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeepStyleJobViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,12 +142,14 @@
 			isa = PBXGroup;
 			children = (
 				153A38FB1C1DFF240030AD5D /* AppDelegate.swift */,
+				153A39021C1DFF240030AD5D /* Assets.xcassets */,
+				153A39071C1DFF240030AD5D /* Info.plist */,
+				157612D41C277F6300F26530 /* CBUITableSource.m */,
+				157612D61C277F7700F26530 /* CBUITableSource.h */,
 				153A392D1C1E02D20030AD5D /* AddDeepStyleViewController.swift */,
 				153A392E1C1E02D20030AD5D /* AddDeepStyleViewController.xib */,
 				153A392F1C1E02D20030AD5D /* LoginViewController.swift */,
 				153A39321C1E02D20030AD5D /* Util.swift */,
-				153A39021C1DFF240030AD5D /* Assets.xcassets */,
-				153A39071C1DFF240030AD5D /* Info.plist */,
 				153A39391C1E04E00030AD5D /* Couchbase-Lite-Bridging-Header.h */,
 				153A393A1C1E11FF0030AD5D /* DBHelper.swift */,
 				153A393E1C1E1C0B0030AD5D /* DeepStyleJob.swift */,
@@ -152,8 +158,8 @@
 				153A39431C2141B90030AD5D /* GalleryViewController.xib */,
 				157612CD1C27743300F26530 /* GalleryTableViewCell.swift */,
 				157612CE1C27743300F26530 /* GalleryTableViewCell.xib */,
-				157612D41C277F6300F26530 /* CBUITableSource.m */,
-				157612D61C277F7700F26530 /* CBUITableSource.h */,
+				157612E61C287C3F00F26530 /* DeepStyleJobViewController.swift */,
+				157612E71C287C3F00F26530 /* DeepStyleJobViewController.xib */,
 			);
 			path = DeepStyle2;
 			sourceTree = "<group>";
@@ -249,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				157612D01C27743300F26530 /* GalleryTableViewCell.xib in Resources */,
+				157612E91C287C3F00F26530 /* DeepStyleJobViewController.xib in Resources */,
 				153A39451C2141B90030AD5D /* GalleryViewController.xib in Resources */,
 				153A39341C1E02D20030AD5D /* AddDeepStyleViewController.xib in Resources */,
 				153A39031C1DFF240030AD5D /* Assets.xcassets in Resources */,
@@ -276,6 +283,7 @@
 				153A39381C1E02D20030AD5D /* Util.swift in Sources */,
 				153A393F1C1E1C0B0030AD5D /* DeepStyleJob.swift in Sources */,
 				153A39441C2141B90030AD5D /* GalleryViewController.swift in Sources */,
+				157612E81C287C3F00F26530 /* DeepStyleJobViewController.swift in Sources */,
 				153A39331C1E02D20030AD5D /* AddDeepStyleViewController.swift in Sources */,
 				157612D51C277F6300F26530 /* CBUITableSource.m in Sources */,
 				153A38FC1C1DFF240030AD5D /* AppDelegate.swift in Sources */,

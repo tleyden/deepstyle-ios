@@ -97,8 +97,7 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBUITableDel
         let galleryCell = cell as! GalleryTableViewCell
         cell.textLabel!.font = UIFont(name: "Helvetica", size: 18.0)
         
-        let doc = row.document
-        let job = DeepStyleJob(forDocument: doc!)
+        let job = lookupJobForQueryRow(row)
         
         if let styleImage = job.styleImage() {
             galleryCell.paintingImageView!.image = styleImage
@@ -110,6 +109,14 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBUITableDel
         
         if let finishedImage = job.finishedImage() {
             galleryCell.finishedImageView!.image = finishedImage
+        } else {
+            if job.state == "READY_TO_PROCESS" {
+                galleryCell.finishedImageView!.image = UIImage(named: "transit-icon")
+            }
+            else {
+                galleryCell.finishedImageView!.image = UIImage(named: "icon-gear")
+            }
+            
         }
 
         
@@ -118,6 +125,26 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBUITableDel
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 87.5
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // CBLQueryRow *row = [self.dataSource rowAtIndex:indexPath.row];
+        if let row = self.dataSource.rowAtIndexPath(indexPath) {
+            let job = lookupJobForQueryRow(row)
+            
+            let jobViewController = DeepStyleJobViewController()
+            jobViewController.setJob(job)
+            
+            self.navigationController?.pushViewController(jobViewController, animated: true)
+        }
+        
+    }
+    
+    func lookupJobForQueryRow(row: CBLQueryRow) -> DeepStyleJob {
+        let doc = row.document
+        return DeepStyleJob(forDocument: doc!)
+    }
+    
 
     /*
     // MARK: - Navigation

@@ -109,9 +109,14 @@ class DBHelper {
     }
     
     // Local Document KV store lookup.
-    func lookupLocalDocKV(key: String) -> String {
+    func lookupLocalDocKV(key: String) -> String? {
         let localDocJson = database?.existingLocalDocumentWithID(key)
-        return localDocJson!["value"] as! String
+        if (localDocJson != nil) {
+            if let value = localDocJson!["value"] {
+                return (value as! String)
+            }
+        }
+        return nil
     }
     
     // Local Document KV store set

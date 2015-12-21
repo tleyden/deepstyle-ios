@@ -20,7 +20,7 @@ class LoginSession {
     
     
     // LoginSession.sharedInstance.lookupSavedUserIdForAccessToken(accessToken)
-    func lookupSavedUserIdForAccessToken(accessToken: String) -> String {
+    func lookupSavedUserIdForAccessToken(accessToken: String) -> String? {
         return DBHelper.sharedInstance.lookupLocalDocKV(accessToken)
     }
     
