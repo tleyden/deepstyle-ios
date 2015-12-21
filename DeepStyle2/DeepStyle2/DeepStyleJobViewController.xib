@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeepStyleJobViewController" customModule="DeepStyle2" customModuleProvider="target">
@@ -18,17 +19,42 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cET-vW-LsL">
-                    <rect key="frame" x="40" y="453" width="240" height="128"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EpL-Wf-IS6">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EpL-Wf-IS6">
                     <rect key="frame" x="316" y="453" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="EpL-Wf-IS6" secondAttribute="height" multiplier="15:8" id="DB9-fE-Ged"/>
+                    </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PN1-Bt-gDt">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PN1-Bt-gDt">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="PN1-Bt-gDt" secondAttribute="height" multiplier="15:11" id="6Db-9j-L7C"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cET-vW-LsL">
+                    <rect key="frame" x="40" y="453" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="cET-vW-LsL" secondAttribute="height" multiplier="15:8" id="QTO-yc-VO3"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="EpL-Wf-IS6" firstAttribute="top" secondItem="PN1-Bt-gDt" secondAttribute="bottom" constant="13" id="9xu-lb-FeG"/>
+                <constraint firstItem="cET-vW-LsL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="AVt-5D-iID"/>
+                <constraint firstAttribute="bottom" secondItem="cET-vW-LsL" secondAttribute="bottom" constant="19" id="H0J-DV-PeA"/>
+                <constraint firstItem="EpL-Wf-IS6" firstAttribute="leading" secondItem="cET-vW-LsL" secondAttribute="trailing" constant="36" id="Mtj-n8-NDI"/>
+                <constraint firstItem="EpL-Wf-IS6" firstAttribute="leading" secondItem="cET-vW-LsL" secondAttribute="trailing" constant="36" id="N1R-iG-xEN"/>
+                <constraint firstItem="cET-vW-LsL" firstAttribute="top" secondItem="PN1-Bt-gDt" secondAttribute="bottom" constant="13" id="UGR-Vv-c4a"/>
+                <constraint firstAttribute="trailing" secondItem="PN1-Bt-gDt" secondAttribute="trailing" id="XPr-ry-lWG"/>
+                <constraint firstAttribute="bottom" secondItem="EpL-Wf-IS6" secondAttribute="bottom" constant="19" id="YGl-It-umu"/>
+                <constraint firstAttribute="trailing" secondItem="EpL-Wf-IS6" secondAttribute="trailing" constant="44" id="aRl-G9-QyM"/>
+                <constraint firstItem="EpL-Wf-IS6" firstAttribute="top" secondItem="PN1-Bt-gDt" secondAttribute="bottom" constant="13" id="gJ1-19-0QX"/>
+                <constraint firstItem="PN1-Bt-gDt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="huD-OF-pVj"/>
+                <constraint firstItem="PN1-Bt-gDt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iYx-9s-EpL"/>
+                <constraint firstAttribute="trailing" secondItem="EpL-Wf-IS6" secondAttribute="trailing" constant="44" id="kXb-e1-Wfr"/>
+            </constraints>
+            <point key="canvasLocation" x="305" y="287"/>
         </view>
     </objects>
 </document>
