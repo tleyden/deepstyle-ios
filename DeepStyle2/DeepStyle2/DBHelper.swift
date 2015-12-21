@@ -22,7 +22,11 @@ class DBHelper {
         do {
             
             CBLManager.sharedInstance().storageType = kCBLForestDBStorage
-                        
+            
+            // new replicator -- not working
+            // dbmgr.replicatorClassName = @"CBLBlipReplicator";
+            // dbmgr.dispatchQueue = dispatch_get_main_queue();
+            
             try database = CBLManager.sharedInstance().databaseNamed(DBHelper.databaseName)
             
         }

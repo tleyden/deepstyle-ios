@@ -95,21 +95,22 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBUITableDel
     func couchTableSource(source: CBUITableSource, willUseCell cell: UITableViewCell, forRow row: CBLQueryRow) {
         
         let galleryCell = cell as! GalleryTableViewCell
-        
-        print("cell: \(galleryCell)")
         cell.textLabel!.font = UIFont(name: "Helvetica", size: 18.0)
+        
         let doc = row.document
-        do {
-            try print("revs: \(doc?.getRevisionHistory())")
-        } catch {
-            print("error: \(error)")
+        let job = DeepStyleJob(forDocument: doc!)
+        
+        if let styleImage = job.styleImage() {
+            galleryCell.paintingImageView!.image = styleImage
         }
         
-        let job = DeepStyleJob(forDocument: doc!)
-        print("job id: \(job.document?.documentID) state: \(job.state)")
-        let styleImageAttachment = job.attachmentNamed("style_image")
-        let styleImage = UIImage(data: styleImageAttachment!.content!)
-        galleryCell.paintingImageView!.image = styleImage
+        if let sourceImage = job.sourceImage() {
+            galleryCell.photoImageView!.image = sourceImage
+        }
+        
+        if let finishedImage = job.finishedImage() {
+            galleryCell.finishedImageView!.image = finishedImage
+        }
 
         
     }
