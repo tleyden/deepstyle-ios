@@ -35,6 +35,8 @@ class DeepStyleJobViewController: UIViewController {
         }
         if let finishedImage = job.finishedImage() {
             self.finishedImage = finishedImage
+        } else {
+            self.finishedImage = UIImage(named: "icon-gear")
         }
     }
 
