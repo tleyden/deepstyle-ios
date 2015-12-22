@@ -11,6 +11,7 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBUITableDel
     var presenterViewController: PresenterViewController? = nil
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         let database = DBHelper.sharedInstance.database
@@ -106,17 +107,16 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBUITableDel
         if let sourceImage = job.sourceImage() {
             galleryCell.photoImageView!.image = sourceImage
         }
-        
-        if let finishedImage = job.finishedImage() {
-            galleryCell.finishedImageView!.image = finishedImage
-        } else {
-            if job.state == "READY_TO_PROCESS" {
-                galleryCell.finishedImageView!.image = UIImage(named: "transit-icon")
+
+        switch job.state! {
+        case DeepStyleJob.StateReadyToProcess:
+            galleryCell.finishedImageView!.image = UIImage(named: "transit-icon")
+        case DeepStyleJob.StateProcessingSuccessful:
+            if let finishedImage = job.finishedImage() {
+                galleryCell.finishedImageView!.image = finishedImage
             }
-            else {
-                galleryCell.finishedImageView!.image = UIImage(named: "icon-gear")
-            }
-            
+        default:
+            galleryCell.finishedImageView!.image = UIImage(named: "icon-gear")
         }
 
         
@@ -142,6 +142,7 @@ class GalleryViewController: UIViewController, UITableViewDelegate, CBUITableDel
     
     func lookupJobForQueryRow(row: CBLQueryRow) -> DeepStyleJob {
         let doc = row.document
+        print("doc id: \(doc?.documentID)")
         return DeepStyleJob(forDocument: doc!)
     }
     

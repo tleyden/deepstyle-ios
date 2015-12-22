@@ -5,6 +5,12 @@ class DeepStyleJob: CBLModel {
     
     static let docType = "job"
     
+    static let StateNotReadyToProcess = "NOT_READY_TO_PROCESS"
+    static let StateReadyToProcess = "READY_TO_PROCESS"
+    static let StateBeingProcessed = "BEING_PROCESSED"
+    static let StateProcessingSuccessful = "PROCESSING_SUCCESSFUL"
+    static let StateProcessingFailed = "PROCESSING_FAILED"
+    
     @NSManaged var state: String?
     @NSManaged var owner: String?
     
