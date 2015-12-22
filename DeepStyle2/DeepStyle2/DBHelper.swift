@@ -51,12 +51,14 @@ class DBHelper {
                 }*/
                 if let docType: AnyObject = doc["type"] {
                     if docType as! String == "job" {
-                        emit(doc, doc)
+                        emit(doc["_id"]!, doc)
+                    } else {
+                        print("Ignoring doc because type != job.  doc: \(doc)")
                     }
                 }
             },
             reduceBlock: nil,
-            version: "1"
+            version: "5"
         )
         
     }
