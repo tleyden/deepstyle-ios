@@ -22,6 +22,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
             
             let facebookUserId = LoginSession.sharedInstance.lookupSavedUserIdForAccessToken(accessToken.tokenString)
             LoginSession.sharedInstance.userId = facebookUserId
+            
+            do {
+                try DBHelper.sharedInstance.startReplicationFromFacebookToken()
+            } catch {
+                self.showError("Oops!  Error starting replication", error: error)
+            }
+            
             self.showNextButton()
             
         }
