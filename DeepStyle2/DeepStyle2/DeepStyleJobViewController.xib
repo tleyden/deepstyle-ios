@@ -3,14 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeepStyleJobViewController" customModule="DeepStyle2" customModuleProvider="target">
             <connections>
-                <outlet property="finishedImageView" destination="PN1-Bt-gDt" id="tLy-df-kyO"/>
-                <outlet property="paintingImageView" destination="cET-vW-LsL" id="TbT-o8-tMQ"/>
-                <outlet property="photoImageView" destination="EpL-Wf-IS6" id="aTI-Ve-1Cl"/>
+                <outlet property="finishedImageView" destination="in8-89-1vD" id="FmI-WY-Ib1"/>
+                <outlet property="paintingImageView" destination="0xf-XS-TWb" id="T51-7m-fuy"/>
+                <outlet property="photoImageView" destination="f3I-uX-fvv" id="hwD-QE-Rrt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,41 +18,45 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EpL-Wf-IS6">
-                    <rect key="frame" x="316" y="453" width="240" height="128"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="EpL-Wf-IS6" secondAttribute="height" multiplier="15:8" id="DB9-fE-Ged"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="in8-89-1vD">
+                    <rect key="frame" x="187" y="65" width="240" height="128"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PN1-Bt-gDt">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="PN1-Bt-gDt" secondAttribute="height" multiplier="15:11" id="6Db-9j-L7C"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0xf-XS-TWb">
+                    <rect key="frame" x="22" y="437" width="240" height="128"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cET-vW-LsL">
-                    <rect key="frame" x="40" y="453" width="240" height="128"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="cET-vW-LsL" secondAttribute="height" multiplier="15:8" id="QTO-yc-VO3"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f3I-uX-fvv">
+                    <rect key="frame" x="340" y="437" width="240" height="128"/>
                 </imageView>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HRE-x1-Es3">
+                    <rect key="frame" x="294" y="439" width="13" height="124"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="EpL-Wf-IS6" firstAttribute="top" secondItem="PN1-Bt-gDt" secondAttribute="bottom" constant="13" id="9xu-lb-FeG"/>
-                <constraint firstItem="cET-vW-LsL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="AVt-5D-iID"/>
-                <constraint firstAttribute="bottom" secondItem="cET-vW-LsL" secondAttribute="bottom" constant="19" id="H0J-DV-PeA"/>
-                <constraint firstItem="EpL-Wf-IS6" firstAttribute="leading" secondItem="cET-vW-LsL" secondAttribute="trailing" constant="36" id="Mtj-n8-NDI"/>
-                <constraint firstItem="EpL-Wf-IS6" firstAttribute="leading" secondItem="cET-vW-LsL" secondAttribute="trailing" constant="36" id="N1R-iG-xEN"/>
-                <constraint firstItem="cET-vW-LsL" firstAttribute="top" secondItem="PN1-Bt-gDt" secondAttribute="bottom" constant="13" id="UGR-Vv-c4a"/>
-                <constraint firstAttribute="trailing" secondItem="PN1-Bt-gDt" secondAttribute="trailing" id="XPr-ry-lWG"/>
-                <constraint firstAttribute="bottom" secondItem="EpL-Wf-IS6" secondAttribute="bottom" constant="19" id="YGl-It-umu"/>
-                <constraint firstAttribute="trailing" secondItem="EpL-Wf-IS6" secondAttribute="trailing" constant="44" id="aRl-G9-QyM"/>
-                <constraint firstItem="EpL-Wf-IS6" firstAttribute="top" secondItem="PN1-Bt-gDt" secondAttribute="bottom" constant="13" id="gJ1-19-0QX"/>
-                <constraint firstItem="PN1-Bt-gDt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="huD-OF-pVj"/>
-                <constraint firstItem="PN1-Bt-gDt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iYx-9s-EpL"/>
-                <constraint firstAttribute="trailing" secondItem="EpL-Wf-IS6" secondAttribute="trailing" constant="44" id="kXb-e1-Wfr"/>
+                <constraint firstItem="f3I-uX-fvv" firstAttribute="leading" secondItem="HRE-x1-Es3" secondAttribute="trailing" constant="1" id="A2p-yZ-kfJ"/>
+                <constraint firstAttribute="bottom" secondItem="0xf-XS-TWb" secondAttribute="bottom" constant="1" id="Aw9-yK-gjR"/>
+                <constraint firstAttribute="trailing" secondItem="0xf-XS-TWb" secondAttribute="trailing" constant="1" id="B8G-Vv-iE4"/>
+                <constraint firstAttribute="trailing" secondItem="in8-89-1vD" secondAttribute="trailing" constant="1" id="CiO-Gu-ATl"/>
+                <constraint firstItem="f3I-uX-fvv" firstAttribute="leading" secondItem="0xf-XS-TWb" secondAttribute="trailing" constant="1" id="Ebf-p6-KW6"/>
+                <constraint firstItem="f3I-uX-fvv" firstAttribute="top" secondItem="in8-89-1vD" secondAttribute="bottom" constant="1" id="Gzg-jZ-26X"/>
+                <constraint firstItem="0xf-XS-TWb" firstAttribute="top" secondItem="in8-89-1vD" secondAttribute="bottom" constant="1" id="H5B-oi-c5e"/>
+                <constraint firstItem="HRE-x1-Es3" firstAttribute="leading" secondItem="0xf-XS-TWb" secondAttribute="trailing" constant="1" id="JyJ-Ei-PBB"/>
+                <constraint firstItem="f3I-uX-fvv" firstAttribute="leading" secondItem="0xf-XS-TWb" secondAttribute="trailing" constant="1" id="Oef-Sg-bCb"/>
+                <constraint firstAttribute="bottom" secondItem="f3I-uX-fvv" secondAttribute="bottom" constant="1" id="T6l-Am-pHh"/>
+                <constraint firstAttribute="trailing" secondItem="f3I-uX-fvv" secondAttribute="trailing" constant="1" id="cdd-SD-Pnn"/>
+                <constraint firstItem="in8-89-1vD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="1" id="j2B-L0-7rb"/>
+                <constraint firstItem="0xf-XS-TWb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="1" id="xCu-HK-6Pm"/>
+                <constraint firstItem="in8-89-1vD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="1" id="yYd-IV-0th"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="B8G-Vv-iE4"/>
+                    <exclude reference="Ebf-p6-KW6"/>
+                    <exclude reference="Oef-Sg-bCb"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="305" y="287"/>
         </view>
     </objects>
