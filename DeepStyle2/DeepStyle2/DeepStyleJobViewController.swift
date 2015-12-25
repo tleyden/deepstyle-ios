@@ -15,11 +15,6 @@ class DeepStyleJobViewController: UIViewController {
         
         super.viewDidLoad()
         
-        /*self.photoImageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        self.paintingImageView.frame = CGRect(x: 0, y: 100, width: 100, height: 100)
-        self.finishedImageView.frame = CGRect(x: 0, y: 200, width: 100, height: 100)
-        */
-        
         self.view.addSubview(self.photoImageView)
         self.view.addSubview(self.paintingImageView)
         self.view.addSubview(self.finishedImageView)
@@ -31,6 +26,13 @@ class DeepStyleJobViewController: UIViewController {
         self.photoImageView.image = self.photoImage
         self.paintingImageView.image = self.paintingImage
         self.finishedImageView.image = self.finishedImage
+        
+        addConstraints()
+        addGestureRecognizers()
+        
+    }
+    
+    func addConstraints() {
         
         self.view.addConstraint(
             NSLayoutConstraint(
@@ -164,8 +166,44 @@ class DeepStyleJobViewController: UIViewController {
             )
         )
         
+    }
+    
+    func addGestureRecognizers() {
+        
+        let photoTap = UITapGestureRecognizer(target: self, action:"photoImageViewTapped")
+        photoTap.numberOfTapsRequired = 1
+        self.photoImageView.userInteractionEnabled = true
+        self.photoImageView.addGestureRecognizer(photoTap)
+        
+        let paintingTap = UITapGestureRecognizer(target: self, action:"paintingImageViewTapped")
+        paintingTap.numberOfTapsRequired = 1
+        self.paintingImageView.userInteractionEnabled = true
+        self.paintingImageView.addGestureRecognizer(paintingTap)
         
     }
+    
+
+    func photoImageViewTapped() {
+        
+        let currentPhotoImage = self.photoImageView.image
+        let currentFinishedImage = self.finishedImageView.image
+        
+        self.photoImageView.image = currentFinishedImage
+        self.finishedImageView.image = currentPhotoImage
+        
+    }
+    
+    func paintingImageViewTapped() {
+        
+        let currentPaintingImage = self.paintingImageView.image
+        let currentFinishedImage = self.finishedImageView.image
+        
+        self.paintingImageView.image = currentFinishedImage
+        self.finishedImageView.image = currentPaintingImage
+        
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -185,95 +223,6 @@ class DeepStyleJobViewController: UIViewController {
             self.finishedImage = UIImage(named: "icon-gear")
         }
     }
-
-
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        print("updateViewConstraints")
-        /*
-        NSLayoutConstraint.activateConstraints(
-            [
-                NSLayoutConstraint(
-                    item: self.finishedImageView,
-                    attribute: .Top,
-                    relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Top,
-                    multiplier: 1,
-                    constant: 0
-                ),
-                NSLayoutConstraint(
-                    item: self.finishedImageView,
-                    attribute: .Height,
-                    relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Height,
-                    multiplier: 0.75,
-                    constant: 0
-                ),
-                NSLayoutConstraint(
-                    item: self.finishedImageView,
-                    attribute: .Width,
-                    relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Width,
-                    multiplier: 0.75,
-                    constant: 0
-                ),
-                NSLayoutConstraint(
-                    item: self.paintingImageView,
-                    attribute: .Height,
-                    relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Height,
-                    multiplier: 0.25,
-                    constant: 0
-                ),
-                NSLayoutConstraint(
-                    item: self.photoImageView,
-                    attribute: .Height,
-                    relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Height,
-                    multiplier: 0.25,
-                    constant: 0
-                ),
-                NSLayoutConstraint(
-                    item: self.photoImageView,
-                    attribute: .Top,
-                    relatedBy: .Equal,
-                    toItem: self.finishedImageView,
-                    attribute: .Bottom,
-                    multiplier: 1,
-                    constant: 0
-                ),
-                NSLayoutConstraint(
-                    item: self.paintingImageView,
-                    attribute: .Top,
-                    relatedBy: .Equal,
-                    toItem: self.finishedImageView,
-                    attribute: .Bottom,
-                    multiplier: 1,
-                    constant: 0
-                ),
-                NSLayoutConstraint(
-                    item: self.paintingImageView,
-                    attribute: .Leading,
-                    relatedBy: .Equal,
-                    toItem: self.photoImageView,
-                    attribute: .Trailing,
-                    multiplier: 1,
-                    constant: 0
-                )
-            ]
-        )
-    */
-
-        
-        
-        
-    }
-    
 
 
     /*
