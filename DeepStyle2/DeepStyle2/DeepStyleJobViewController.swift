@@ -3,9 +3,9 @@ import UIKit
 
 class DeepStyleJobViewController: UIViewController {
     
-    @IBOutlet var photoImageView: UIImageView? = nil
-    @IBOutlet var paintingImageView: UIImageView? = nil
-    @IBOutlet var finishedImageView: UIImageView? = nil
+    var photoImageView: UIImageView = UIImageView()
+    var paintingImageView: UIImageView = UIImageView()
+    var finishedImageView: UIImageView = UIImageView()
     
     var photoImage: UIImage? = nil
     var paintingImage: UIImage? = nil
@@ -14,10 +14,23 @@ class DeepStyleJobViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        /*self.photoImageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        self.paintingImageView.frame = CGRect(x: 0, y: 100, width: 100, height: 100)
+        self.finishedImageView.frame = CGRect(x: 0, y: 200, width: 100, height: 100)
+        */
+        
+        self.view.addSubview(self.photoImageView)
+        self.view.addSubview(self.paintingImageView)
+        self.view.addSubview(self.finishedImageView)
+        
+        self.photoImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.paintingImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.finishedImageView.translatesAutoresizingMaskIntoConstraints = false
 
-        self.photoImageView?.image = self.photoImage
-        self.paintingImageView?.image = self.paintingImage
-        self.finishedImageView?.image = self.finishedImage
+        self.photoImageView.image = self.photoImage
+        self.paintingImageView.image = self.paintingImage
+        self.finishedImageView.image = self.finishedImage
         
     }
 
@@ -40,13 +53,15 @@ class DeepStyleJobViewController: UIViewController {
         }
     }
 
+
     override func updateViewConstraints() {
         super.updateViewConstraints()
         print("updateViewConstraints")
+        
         NSLayoutConstraint.activateConstraints(
             [
                 NSLayoutConstraint(
-                    item: self.finishedImageView!,
+                    item: self.finishedImageView,
                     attribute: .Top,
                     relatedBy: .Equal,
                     toItem: self.view,
@@ -55,7 +70,7 @@ class DeepStyleJobViewController: UIViewController {
                     constant: 0
                 ),
                 NSLayoutConstraint(
-                    item: self.finishedImageView!,
+                    item: self.finishedImageView,
                     attribute: .Height,
                     relatedBy: .Equal,
                     toItem: self.view,
@@ -63,53 +78,17 @@ class DeepStyleJobViewController: UIViewController {
                     multiplier: 0.75,
                     constant: 0
                 ),
-                /*NSLayoutConstraint(
-                    item: self.finishedImageView!,
-                    attribute: .CenterX,
+                NSLayoutConstraint(
+                    item: self.finishedImageView,
+                    attribute: .Width,
                     relatedBy: .Equal,
                     toItem: self.view,
-                    attribute: .CenterX,
-                    multiplier: 1,
+                    attribute: .Width,
+                    multiplier: 0.75,
                     constant: 0
                 ),
                 NSLayoutConstraint(
-                    item: self.finishedImageView!,
-                    attribute: .Trailing,
-                    relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Trailing,
-                    multiplier: 1,
-                    constant: 0
-                ),
-                NSLayoutConstraint(
-                    item: self.finishedImageView!,
-                    attribute: .Leading,
-                    relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Leading,
-                    multiplier: 1,
-                    constant: 0
-                ),*/
-                NSLayoutConstraint(
-                    item: self.photoImageView!,
-                    attribute: .Bottom,
-                    relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Bottom,
-                    multiplier: 1,
-                    constant: 0
-                ),
-                NSLayoutConstraint(
-                    item: self.paintingImageView!,
-                    attribute: .Bottom,
-                    relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Bottom,
-                    multiplier: 1,
-                    constant: 0
-                ),
-                NSLayoutConstraint(
-                    item: self.paintingImageView!,
+                    item: self.paintingImageView,
                     attribute: .Height,
                     relatedBy: .Equal,
                     toItem: self.view,
@@ -118,7 +97,7 @@ class DeepStyleJobViewController: UIViewController {
                     constant: 0
                 ),
                 NSLayoutConstraint(
-                    item: self.photoImageView!,
+                    item: self.photoImageView,
                     attribute: .Height,
                     relatedBy: .Equal,
                     toItem: self.view,
@@ -126,38 +105,29 @@ class DeepStyleJobViewController: UIViewController {
                     multiplier: 0.25,
                     constant: 0
                 ),
-                /*NSLayoutConstraint(
-                    item: self.photoImageView!,
-                    attribute: .Width,
+                NSLayoutConstraint(
+                    item: self.photoImageView,
+                    attribute: .Top,
                     relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Width,
-                    multiplier: 0.5,
+                    toItem: self.finishedImageView,
+                    attribute: .Bottom,
+                    multiplier: 1,
                     constant: 0
                 ),
                 NSLayoutConstraint(
-                    item: self.paintingImageView!,
-                    attribute: .Width,
+                    item: self.paintingImageView,
+                    attribute: .Top,
                     relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Width,
-                    multiplier: 0.5,
+                    toItem: self.finishedImageView,
+                    attribute: .Bottom,
+                    multiplier: 1,
                     constant: 0
-                ),*/
+                )
             ]
         )
 
-        /* self.photoImageView?.addConstraint(
-            NSLayoutConstraint(
-                item: self.finishedImageView!,
-                attribute: .Top,
-                relatedBy: .Equal,
-                toItem: self.photoImageView,
-                attribute: .Top,
-                multiplier: 1,
-                constant: 0
-            )
-        ) */
+
+        
         
         
     }

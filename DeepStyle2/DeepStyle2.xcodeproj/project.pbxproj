@@ -33,7 +33,6 @@
 		157612E31C278F4200F26530 /* libCBLForestDBStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 157612E21C278F4200F26530 /* libCBLForestDBStorage.a */; };
 		157612E51C278F7300F26530 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 157612E41C278F7300F26530 /* libc++.tbd */; };
 		157612E81C287C3F00F26530 /* DeepStyleJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157612E61C287C3F00F26530 /* DeepStyleJobViewController.swift */; };
-		157612E91C287C3F00F26530 /* DeepStyleJobViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 157612E71C287C3F00F26530 /* DeepStyleJobViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +78,6 @@
 		157612E21C278F4200F26530 /* libCBLForestDBStorage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCBLForestDBStorage.a; sourceTree = "<group>"; };
 		157612E41C278F7300F26530 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		157612E61C287C3F00F26530 /* DeepStyleJobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepStyleJobViewController.swift; sourceTree = "<group>"; };
-		157612E71C287C3F00F26530 /* DeepStyleJobViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeepStyleJobViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +157,6 @@
 				157612CD1C27743300F26530 /* GalleryTableViewCell.swift */,
 				157612CE1C27743300F26530 /* GalleryTableViewCell.xib */,
 				157612E61C287C3F00F26530 /* DeepStyleJobViewController.swift */,
-				157612E71C287C3F00F26530 /* DeepStyleJobViewController.xib */,
 			);
 			path = DeepStyle2;
 			sourceTree = "<group>";
@@ -255,7 +252,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				157612D01C27743300F26530 /* GalleryTableViewCell.xib in Resources */,
-				157612E91C287C3F00F26530 /* DeepStyleJobViewController.xib in Resources */,
 				153A39451C2141B90030AD5D /* GalleryViewController.xib in Resources */,
 				153A39341C1E02D20030AD5D /* AddDeepStyleViewController.xib in Resources */,
 				153A39031C1DFF240030AD5D /* Assets.xcassets in Resources */,
