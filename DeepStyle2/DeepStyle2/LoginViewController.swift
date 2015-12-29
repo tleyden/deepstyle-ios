@@ -56,12 +56,20 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         
+        print("loginButton didCompleteWithResult called with result: \(result) error: \(error)")
+        
+        if (error != nil)
+        {
+            self.showError("Error doing facebook login", error: error)
+            return
+        }
+        
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
-            if ((error) != nil)
+            if (error != nil)
             {
-                self.showError("Oops!  Error getting facebook ID", error: error)
+                self.showError("Error getting facebook ID", error: error)
             }
             else
             {
@@ -70,19 +78,25 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
                 do {
                     try LoginSession.sharedInstance.saveUserIdForCurrentFBAccessToken(userId)
                 } catch {
-                    self.showError("Oops!  Error saving user ID", error: error)
+                    self.showError("Error saving user ID", error: error)
                 }
                 
                 do {
                     try DBHelper.sharedInstance.startReplicationFromFacebookToken()
                 } catch {
-                    self.showError("Oops!  Error starting replication", error: error)
+                    self.showError("Error starting replication", error: error)
                 }
                 
             }
         })
         
-        showRecentGalleryViewController()
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            showRecentGalleryViewController()
+        } else {
+            self.showError("Error doing facebook login -- no access token", error: DBHelperError.FBUserNotLoggedIn)
+        }
+        
+        
     }
     
     func returnUserData()
