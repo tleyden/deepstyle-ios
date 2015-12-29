@@ -1,8 +1,9 @@
 
 import UIKit
 
-
-class AddDeepStyleViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+// Note regarding @objc(AddDeepStyleViewController) -- this is needed to workaround for crash where all IBOutlets are nil with iOS 8.x
+// http://bit.ly/1JHyDzo + http://bit.ly/1JHyDzo
+@objc(AddDeepStyleViewController) class AddDeepStyleViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // the view controller that spawned us will receive our images back, so it registers as a SourceAndStyleImageReciever
     var sourceAndStyleReceiver : SourceAndStyleImageReciever? = nil

@@ -2,7 +2,9 @@
 
 import UIKit
 
-class GalleryViewController: UIViewController, UITableViewDelegate, CBUITableDelegate, PresenterViewController, SourceAndStyleImageReciever {
+// Note regarding @objc(GalleryViewController) -- this is needed to workaround for crash where all IBOutlets are nil with iOS 8.x
+// http://bit.ly/1JHyDzo + http://bit.ly/1JHyDzo
+@objc(GalleryViewController) class GalleryViewController: UIViewController, UITableViewDelegate, CBUITableDelegate, PresenterViewController, SourceAndStyleImageReciever {
 
     @IBOutlet weak var tableView: UITableView!  //<<-- TableView Outlet
     
