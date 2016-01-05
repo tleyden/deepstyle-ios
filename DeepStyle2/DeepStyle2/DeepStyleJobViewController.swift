@@ -30,7 +30,22 @@ class DeepStyleJobViewController: UIViewController {
         addConstraints()
         addGestureRecognizers()
         
+        let shareBar: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem:.Action, target: self, action: Selector("userDidTapShare"))
+        self.navigationItem.rightBarButtonItem = shareBar
+        
     }
+    
+    func userDidTapShare() {
+        
+        if self.finishedImage != nil {
+            let objectsToShare = [self.finishedImage!]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
+        
+    }
+
     
     func addConstraints() {
         
