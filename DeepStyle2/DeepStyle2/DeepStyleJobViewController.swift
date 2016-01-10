@@ -34,11 +34,16 @@ class DeepStyleJobViewController: UIViewController {
         
         addConstraints()
         addGestureRecognizers()
-        fixFinishedImageViewOrientation(self.finishedImageView, photoImageView: self.photoImageView)
+        fixFinishedImageView()
         
         let shareBar: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem:.Action, target: self, action: Selector("userDidTapShare"))
         self.navigationItem.rightBarButtonItem = shareBar
         
+    }
+    
+    func fixFinishedImageView() {
+        let rotatedFinishedImage = fixFinishedImageViewOrientation(self.finishedImageView.image!, photoImage: self.photoImageView.image!)
+        self.finishedImageView.image = rotatedFinishedImage
     }
     
     func userDidTapShare() {

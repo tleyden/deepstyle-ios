@@ -17,18 +17,17 @@ protocol SourceAndStyleImageReciever {
     func dismissWithImages(sourceImage: UIImage, styleImage: UIImage) throws
 }
 
-func fixFinishedImageViewOrientation(finishedImageView: UIImageView, photoImageView: UIImageView) {
+func fixFinishedImageViewOrientation(finishedImage: UIImage, photoImage: UIImage) -> UIImage {
     
     // set the orientation of the finished image view to the same orientation of the
     // photo image view
     
-    if let newOrientatation = photoImageView.image?.imageOrientation {
-        
-        let rotatedImage  : UIImage = UIImage(CGImage: finishedImageView.image!.CGImage! ,
-            scale: 1.0 ,
-            orientation: newOrientatation)
-        
-        finishedImageView.image = rotatedImage
-    }
+    let newOrientatation = photoImage.imageOrientation
+    
+    let rotatedImage: UIImage = UIImage(CGImage: finishedImage.CGImage!,
+        scale: 1.0 ,
+        orientation: newOrientatation)
+    
+    return rotatedImage
     
 }

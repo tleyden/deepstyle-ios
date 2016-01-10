@@ -129,9 +129,8 @@ import FBSDKLoginKit
             galleryCell.finishedImageView!.image = UIImage(named: "transit-icon")
         case DeepStyleJob.StateProcessingSuccessful:
             if let finishedImage = job.finishedImage() {
-                // fixFinishedImageViewOrientation(self.finishedImageView, photoImageView: self.photoImageView)
-
-                galleryCell.finishedImageView!.image = finishedImage
+                let rotatedFinishedImage = fixFinishedImageViewOrientation(finishedImage, photoImage: galleryCell.photoImageView!.image!)
+                galleryCell.finishedImageView!.image = rotatedFinishedImage
             }
         default:
             galleryCell.finishedImageView!.image = UIImage(named: "icon-gear")
