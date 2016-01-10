@@ -20,8 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.backgroundColor = UIColor.whiteColor()
-        let loginViewController =  LoginViewController()
-        self.window!.rootViewController = loginViewController
+        
+        let recentGalleryVewController = GalleryViewController()
+        let nav = UINavigationController(rootViewController: recentGalleryVewController)
+        
+        self.window!.rootViewController = nav
         self.window!.makeKeyAndVisible()
         
         return true

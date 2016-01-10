@@ -4,9 +4,12 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 // TODO: figure out why using a nib didn't work -- button was not centered
+// RE TODO: need to add constraints
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, PresenterViewController {
 
+    var presenterViewController: PresenterViewController? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,26 +32,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
                 self.showError("Oops!  Error starting replication", error: error)
             }
             
-            self.showNextButton()
-            
         }
         
     }
     
-    func showNextButton() {
-        
-        // add a button to skip to the next screen
-        // TODO: should happen automatically, may need to rework view controllers for this
-        let nextScreenButton = UIButton()
-        nextScreenButton.setTitle("Next", forState: .Normal)
-        nextScreenButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
-        nextScreenButton.frame = CGRectMake(0, 0, 50, 25)
-        self.view.addSubview(nextScreenButton)
-        nextScreenButton.center = CGPointMake(self.view.center.x, self.view.center.y + 50)
-        nextScreenButton.addTarget(self, action: "showRecentGalleryViewController", forControlEvents: .TouchUpInside)
-        
-    }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -91,7 +79,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
         })
         
         if FBSDKAccessToken.currentAccessToken() != nil {
-            showRecentGalleryViewController()
+            self.presenterViewController?.dismiss()
         } else {
             self.showError("Error doing facebook login -- no access token", error: DBHelperError.FBUserNotLoggedIn)
         }
@@ -117,26 +105,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
         self.presentViewController(alert, animated: true, completion: nil)
         
     }
-    
-    func showRecentGalleryViewController() {
         
-        let recentGalleryVewController = GalleryViewController()
-        
-        // register ourselves as the presenter view controller delegate, so we get called back
-        // when this view wants to get rid of itself
-        recentGalleryVewController.presenterViewController = self
-        
-        let nav = UINavigationController(rootViewController: recentGalleryVewController)
-        self.presentViewController(nav, animated: true, completion: nil)
-        
-        if let accessToken = FBSDKAccessToken.currentAccessToken() {
-            print(accessToken)
-        } else {
-            print("no access token")
-        }
-        
-    }
-    
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("loginButtonDidLogOut")
     }

@@ -1,6 +1,8 @@
 
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 // Note regarding @objc(GalleryViewController) -- this is needed to workaround for crash where all IBOutlets are nil with iOS 8.x
 // http://bit.ly/1JHyDzo + http://bit.ly/1JHyDzo
@@ -46,6 +48,14 @@ import UIKit
         self.navigationItem.rightBarButtonItem = addDeepStyleButton;
         
         self.tableView.registerNib(UINib(nibName: "GalleryTableViewCell", bundle: nil), forCellReuseIdentifier: "GalleryTableViewCell")
+        
+        // if we're not logged in, show the loginview controller
+        if FBSDKAccessToken.currentAccessToken() == nil {
+            let loginViewController =  LoginViewController()
+            loginViewController.presenterViewController = self
+            self.presentViewController(loginViewController, animated: false, completion: nil)
+        }
+        
         
         
     }
