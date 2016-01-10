@@ -34,6 +34,7 @@ class DeepStyleJobViewController: UIViewController {
         
         addConstraints()
         addGestureRecognizers()
+        fixFinishedImageViewOrientation(self.finishedImageView, photoImageView: self.photoImageView)
         
         let shareBar: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem:.Action, target: self, action: Selector("userDidTapShare"))
         self.navigationItem.rightBarButtonItem = shareBar
@@ -200,7 +201,10 @@ class DeepStyleJobViewController: UIViewController {
         self.paintingImageView.userInteractionEnabled = true
         self.paintingImageView.addGestureRecognizer(paintingTap)
         
+        
     }
+    
+
     
 
     func photoImageViewTapped() {
