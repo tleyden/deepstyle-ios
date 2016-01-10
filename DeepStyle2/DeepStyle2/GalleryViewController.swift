@@ -51,11 +51,8 @@ import FBSDKLoginKit
         
         // if we're not logged in, show the loginview controller
         if FBSDKAccessToken.currentAccessToken() == nil {
-            let loginViewController =  LoginViewController()
-            loginViewController.presenterViewController = self
-            self.presentViewController(loginViewController, animated: false, completion: nil)
+             showLoginViewController(false)
         }
-        
         
         
     }
@@ -66,8 +63,15 @@ import FBSDKLoginKit
     }
     
     func logout(sender: UIBarButtonItem) {
-        print("logout")
-        presenterViewController?.dismiss()
+        LoginSession.sharedInstance.logout()
+        showLoginViewController(false)
+    }
+    
+    func showLoginViewController(animated: Bool) {
+        let loginViewController =  LoginViewController()
+        loginViewController.presenterViewController = self
+        self.presentViewController(loginViewController, animated: animated, completion: nil)
+
     }
     
     func addDeepStyle(sender: UIBarButtonItem) {

@@ -32,6 +32,10 @@ class LoginSession {
         
     }
     
+    func logout() {
+        FBSDKAccessToken.setCurrentAccessToken(nil)
+    }
+    
 }
 
 enum LoginSessionError: ErrorType {
