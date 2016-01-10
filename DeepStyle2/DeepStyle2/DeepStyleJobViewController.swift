@@ -24,8 +24,13 @@ class DeepStyleJobViewController: UIViewController {
         self.finishedImageView.translatesAutoresizingMaskIntoConstraints = false
 
         self.photoImageView.image = self.photoImage
+        self.photoImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        
         self.paintingImageView.image = self.paintingImage
+        self.paintingImageView.contentMode = UIViewContentMode.ScaleAspectFit
+            
         self.finishedImageView.image = self.finishedImage
+        self.finishedImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
         addConstraints()
         addGestureRecognizers()
