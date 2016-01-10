@@ -9,6 +9,7 @@ import FBSDKLoginKit
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, PresenterViewController {
 
     var presenterViewController: PresenterViewController? = nil
+    var activityIndicator: UIActivityIndicatorView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
         
         print("loginButton didCompleteWithResult called with result: \(result) error: \(error)")
         
+        showActivityIndicator()
+        
         if (error != nil)
         {
             self.showError("Error doing facebook login", error: error)
@@ -75,16 +78,35 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
                     self.showError("Error starting replication", error: error)
                 }
                 
+                if FBSDKAccessToken.currentAccessToken() != nil {
+                    self.presenterViewController?.dismiss()
+                } else {
+                    self.showError("Error doing facebook login -- no access token", error: DBHelperError.FBUserNotLoggedIn)
+                }
+                
+                self.hideActivityIndicator()
+                
             }
         })
         
-        if FBSDKAccessToken.currentAccessToken() != nil {
-            self.presenterViewController?.dismiss()
-        } else {
-            self.showError("Error doing facebook login -- no access token", error: DBHelperError.FBUserNotLoggedIn)
-        }
         
         
+        
+    }
+    
+    func showActivityIndicator() {
+        
+        self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        
+        self.activityIndicator!.center=self.view.center
+        self.activityIndicator!.center.y += 50  // move it below the fb button
+        self.activityIndicator!.startAnimating()
+        self.view.addSubview(self.activityIndicator!)
+        
+    }
+    
+    func hideActivityIndicator() {
+        self.activityIndicator?.removeFromSuperview()
     }
     
     func returnUserData()
