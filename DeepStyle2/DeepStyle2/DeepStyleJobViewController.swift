@@ -42,14 +42,21 @@ class DeepStyleJobViewController: UIViewController {
     }
     
     func fixFinishedImageView() {
-        let rotatedFinishedImage = fixFinishedImageViewOrientation(self.finishedImageView.image!, photoImage: self.photoImageView.image!)
-        self.finishedImageView.image = rotatedFinishedImage
+        self.finishedImageView.image = rotatedFinishedImage()
+    }
+    
+    func rotatedFinishedImage() -> UIImage {
+        return fixFinishedImageViewOrientation(
+            self.finishedImageView.image!,
+            photoImage: self.photoImageView.image!
+        )
+
     }
     
     func userDidTapShare() {
         
         if self.finishedImage != nil {
-            let objectsToShare = [self.finishedImage!]
+            let objectsToShare = [rotatedFinishedImage()]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             self.presentViewController(activityVC, animated: true, completion: nil)
