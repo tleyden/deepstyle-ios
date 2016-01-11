@@ -52,8 +52,13 @@ import FBSDKLoginKit
         // if we're not logged in, show the loginview controller
         if FBSDKAccessToken.currentAccessToken() == nil {
              showLoginViewController(false)
+        } else {
+            do {
+                try DBHelper.sharedInstance.startReplicationFromFacebookToken()
+            } catch {
+                self.showError("Oops!  Error starting replication", error: error)
+            }
         }
-        
         
     }
 
@@ -63,7 +68,13 @@ import FBSDKLoginKit
     }
     
     func logout(sender: UIBarButtonItem) {
-        LoginSession.sharedInstance.logout()
+        
+        do {
+            try LoginSession.sharedInstance.logout()
+        } catch {
+            self.showError("Oops!  Error logging out", error: error)
+        }
+        
         showLoginViewController(false)
     }
     
@@ -161,6 +172,19 @@ import FBSDKLoginKit
         let doc = row.document
         print("doc id: \(doc?.documentID)")
         return DeepStyleJob(forDocument: doc!)
+    }
+    
+    func showError(msg: String, error: ErrorType) {
+        
+        print("Error: \(msg) - \(error)")
+        let alert = UIAlertController(
+            title: "Alert",
+            message: "Oops! \(msg) - \(error)",
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
     }
     
 

@@ -9,15 +9,25 @@ class LoginSession {
     
     static let sharedInstance = LoginSession()
 
-    var userId: String? = nil
-    
     func getLoggedInUserId() throws -> String {
-        if let loggedInUserId = userId {
-            return loggedInUserId
+        
+        if let accessToken = FBSDKAccessToken.currentAccessToken() {
+            
+            if let facebookUserId = LoginSession.sharedInstance.lookupSavedUserIdForAccessToken(accessToken.tokenString) {
+                return facebookUserId
+            }
+            print("Could not lookup facebookUserId from \(accessToken.tokenString)")
+            throw LoginSessionError.UserNotLoggedIn
+            
+        } else {
+            throw LoginSessionError.UserNotLoggedIn
         }
-        throw LoginSessionError.UserNotLoggedIn
+        
     }
     
+    func saveUserLoginInfo(userId: String) throws {
+        try saveUserIdForCurrentFBAccessToken(userId)
+    }
     
     // LoginSession.sharedInstance.lookupSavedUserIdForAccessToken(accessToken)
     func lookupSavedUserIdForAccessToken(accessToken: String) -> String? {
@@ -29,11 +39,14 @@ class LoginSession {
             let localDocKey = accessToken.tokenString
             try DBHelper.sharedInstance.setLocalDocKV(localDocKey, value: userId)
         }
-        
     }
     
-    func logout() {
-        FBSDKAccessToken.setCurrentAccessToken(nil)
+    func logout() throws {
+        if let accessToken = FBSDKAccessToken.currentAccessToken() {
+            let localDocKey = accessToken.tokenString
+            try DBHelper.sharedInstance.setLocalDocKV(localDocKey, value: "")
+            FBSDKAccessToken.setCurrentAccessToken(nil)
+        }
     }
     
 }

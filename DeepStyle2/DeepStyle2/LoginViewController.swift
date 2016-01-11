@@ -21,20 +21,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
         self.view.addSubview(loginView)
         loginView.center = self.view.center
         
-        // if we're logged in, fetch the user id from storage and then show the gallery
-        if let accessToken = FBSDKAccessToken.currentAccessToken() {
-            
-            let facebookUserId = LoginSession.sharedInstance.lookupSavedUserIdForAccessToken(accessToken.tokenString)
-            LoginSession.sharedInstance.userId = facebookUserId
-            
-            do {
-                try DBHelper.sharedInstance.startReplicationFromFacebookToken()
-            } catch {
-                self.showError("Oops!  Error starting replication", error: error)
-            }
-            
-        }
-        
     }
     
     
@@ -65,12 +51,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
             else
             {
                 let userId = result.valueForKey("id") as! String
-                LoginSession.sharedInstance.userId = userId
+                
                 do {
-                    try LoginSession.sharedInstance.saveUserIdForCurrentFBAccessToken(userId)
+                    try LoginSession.sharedInstance.saveUserLoginInfo(userId)
                 } catch {
                     self.showError("Error saving user ID", error: error)
                 }
+                
                 
                 do {
                     try DBHelper.sharedInstance.startReplicationFromFacebookToken()
