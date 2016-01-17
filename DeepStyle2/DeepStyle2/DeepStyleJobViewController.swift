@@ -10,26 +10,6 @@ class DeepStyleJobViewController: UIViewController {
     var photoImage: UIImage? = nil
     var paintingImage: UIImage? = nil
     var finishedImage: UIImage? = nil
-    
-    
-    /* var job: DeepStyleJob {
-        get {
-            return job
-        }
-        set {
-            if let jobPhotoImage = job.sourceImage() {
-                self.photoImage = jobPhotoImage
-            }
-            if let jobPaintingImage = job.styleImage() {
-                self.paintingImage = jobPaintingImage
-            }
-            if let finishedImage = job.finishedImage() {
-                self.finishedImage = finishedImage
-            } else {
-                self.finishedImage = UIImage(named: "icon-gear")
-            }
-        }
-    }*/
 
     override func viewDidLoad() {
         
@@ -240,20 +220,11 @@ class DeepStyleJobViewController: UIViewController {
         
     }
     
-
     func finishedImageViewTapped() {
         
         // push a new view controller that only has the finished image
         let fullscreenImageViewController = FullScreenImageViewController()
-        // fullScreenImageViewController.fullScreenImageView = self.finishedImageView
-        // fullScreenImageViewController.setTheFullScreenImageView(self.finishedImageView)
-        // fullscreenImageViewController.fullScreenImageView?.image = self.finishedImageView.image?
-        let newCgIm = CGImageCreateCopy(self.finishedImageView.image?.CGImage)
-        let newImage = UIImage(CGImage: newCgIm!, scale: self.finishedImageView.image!.scale, orientation: self.finishedImageView.image!.imageOrientation)
-        // fullscreenImageViewController.fullScreenImageView?.image = newImage
-        fullscreenImageViewController.fullScreenImage = newImage
-        
-        // fullscreenImageViewController.setTheFullScreenImageView(<#T##fullscreenImageViewToUse: UIImageView##UIImageView#>)
+        fullscreenImageViewController.fullScreenImage = self.finishedImageView.image
         self.navigationController?.pushViewController(fullscreenImageViewController, animated: true)
         
     }
