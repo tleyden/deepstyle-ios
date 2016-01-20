@@ -1,7 +1,7 @@
 
 import UIKit
 
-class FullScreenImageViewController: UIViewController {
+@objc(FullScreenImageViewController) class FullScreenImageViewController: UIViewController {
 
     @IBOutlet var fullScreenImageView: UIImageView? = nil
     
@@ -14,7 +14,7 @@ class FullScreenImageViewController: UIViewController {
         self.fullScreenImageView?.image = self.fullScreenImage
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
