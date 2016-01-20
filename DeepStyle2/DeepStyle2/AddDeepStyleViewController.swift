@@ -19,13 +19,25 @@ import UIKit
     @IBOutlet var paintingImageView: UIImageView? = nil
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel:")
         self.navigationItem.leftBarButtonItem = cancelButton;
+        
+        let nextButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: "next:")
+        self.navigationItem.rightBarButtonItem = nextButton;
+        
     }
 
     func cancel(sender: UIBarButtonItem) {
         presenterViewController?.dismiss()
+    }
+    
+    func next(sender: UIBarButtonItem) {
+        
+        // push the view controller to add a gallery image
+        
     }
     
     func showError(error: ErrorType) {
