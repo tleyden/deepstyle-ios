@@ -48,6 +48,18 @@
                 <key>NSTemporaryExceptionMinimumTLSVersion</key>
                 <string>TLSv1.1</string>
             </dict>
+            <key>amazonaws.com</key>
+            <dict>
+                <!--Include to allow subdomains-->
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <!--Include to allow HTTP requests-->
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <!--Include to specify minimum TLS version-->
+                <key>NSTemporaryExceptionMinimumTLSVersion</key>
+                <string>TLSv1.1</string>
+            </dict>
             <key>localhost</key>
             <dict>
                 <!--Include to allow subdomains-->
