@@ -33,9 +33,15 @@ import FBSDKLoginKit
         do {
             print("num docs in db \(database!.documentCount)")
             let queryEnum = try query.run()
+            var numNonDeleted = 0
             while let nextRow = queryEnum.nextRow() {
-                print("nextRow: \(nextRow) doc: \(nextRow.document)")
+                // print("nextRow: \(nextRow) doc: \(nextRow.document)")
+                if nextRow.document!.isDeleted == false {
+                    numNonDeleted += 1
+                }
             }
+            print("num non-deleted docs in cb \(numNonDeleted))")
+            
         } catch {
             print("error running query: \(error)")
         }
