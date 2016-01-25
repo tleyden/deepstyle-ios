@@ -198,6 +198,9 @@ typedef NS_ENUM(unsigned, CBLIndexUpdateMode) {
 /** Random access to a row in the result */
 - (CBLQueryRow*) rowAtIndex: (NSUInteger)index;
 
+/** Resets the enumeration so the next call to -nextObject or -nextRow will return the first row. */
+- (void) reset;
+
 /** Re-sorts the rows based on the given sort descriptors.
     This operation requires that all rows be loaded into memory, so you can't have previously
     called -nextObject, -nextRow or for...in on this enumerator. (But it's fine to use them
@@ -214,7 +217,6 @@ typedef NS_ENUM(unsigned, CBLIndexUpdateMode) {
 - (void) sortUsingDescriptors: (NSArray*)sortDescriptors;
 
 - (instancetype) init NS_UNAVAILABLE;
-- (void) reset  __attribute__((deprecated("call allObjects and iterate that array multiple times")));
 
 @end
 
