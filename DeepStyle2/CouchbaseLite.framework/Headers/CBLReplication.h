@@ -7,7 +7,7 @@
 //
 
 #import "CBLBase.h"
-@class CBLDatabase;
+@class CBLDatabase, CBLDocument;
 @protocol CBLAuthenticator;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -19,6 +19,15 @@ typedef NS_ENUM(unsigned, CBLReplicationStatus) {
     kCBLReplicationIdle,    /**< Continuous replication is caught up and waiting for more changes.*/
     kCBLReplicationActive   /**< The replication is actively transferring data. */
 } ;
+
+
+/** Callback for notifying progress downloading an attachment.
+    `bytesRead` is the number of bytes received so far and `contentLength` is the total number of
+    bytes to read. The download is complete when bytesRead == contentLength. If an error occurs,
+    `error` will be non-nil. */
+typedef void (^CBLAttachmentProgressBlock)(uint64_t bytesRead,
+                                           uint64_t contentLength,
+                                           NSError* error);
 
 
 /** A 'push' or 'pull' replication between a local and a remote database.
@@ -65,6 +74,11 @@ typedef NS_ENUM(unsigned, CBLReplicationStatus) {
 /** Sets the documents to specify as part of the replication. */
 @property (copy, nullable) CBLArrayOf(NSString*) *documentIDs;
 
+/** Should attachments be downloaded automatically along with documents?
+    Defaults to YES; if you set it to NO you can later download individual attachments by calling
+    -downloadAttachment:. */
+@property (nonatomic) BOOL downloadsAttachments;
+
 /** Extra HTTP headers to send in all requests to the remote server.
     Should map strings (header names) to strings. */
 @property (nonatomic, copy, nullable) CBLDictOf(NSString*, NSString*)* headers;
@@ -100,22 +114,24 @@ typedef NS_ENUM(unsigned, CBLReplicationStatus) {
     Facebook authentication. */
 @property (readonly, nullable) NSURL* personaOrigin;
 
-/** Adds a cookie to the shared NSHTTPCookieStorage that will be sent to the remote server. This
-    is useful if you've obtained a session cookie through some external means and need to tell the
-    replicator to send it for authentication purposes.
-    This method constructs an NSHTTPCookie from the given parameters, as well as the remote server
-    URL's host, port and path.
-    If you already have an NSHTTPCookie object for the remote server, you can simply add it to the
-    sharedHTTPCookieStorage yourself. 
-    If you have a "Set-Cookie:" response header, you can use NSHTTPCookie's class methods to parse
-    it to a cookie object, then add it to the sharedHTTPCookieStorage. */
+/** Registers an HTTP cookie that will be sent to the remote server along with the replication's
+    HTTP requests. This is useful if you've obtained a session cookie through some external means.
+    The cookie will be saved persistently until its `expirationDate` passes; or if that date is
+    nil, the cookie will only be associated with this replication object.
+ 
+    The parameters have the same meanings as in the NSHTTPCookie API. If the `path` is nil, the
+    path of this replication's URL is used.
+
+    The replicator does _not_ use the standard shared NSHTTPCookieStorage, so registering a cookie
+    through that will have no effect. This is because each replication has independent
+    authentication and may need to send different cookies. */
 - (void) setCookieNamed: (NSString*)name
               withValue: (NSString*)value
-                   path: (NSString*)path
-         expirationDate: (NSDate*)expirationDate
+                   path: (nullable NSString*)path
+         expirationDate: (nullable NSDate*)expirationDate
                  secure: (BOOL)secure;
 
-/** Deletes the named cookie from the shared NSHTTPCookieStorage for the remote server's URL. */
+/** Deletes the named cookie from this replication's cookie storage. */
 - (void) deleteCookieNamed: (NSString *)name;
 
 /** Adds additional SSL root certificates to be trusted by the replicator, or entirely overrides the
@@ -170,6 +186,7 @@ typedef NS_ENUM(unsigned, CBLReplicationStatus) {
 /** The total number of changes to be processed, if the task is active, else 0 (observable). */
 @property (nonatomic, readonly) unsigned changesCount;
 
+#pragma mark - PENDING DOCUMENTS (PUSH ONLY):
 
 /** The IDs of documents that have local changes that have not yet been pushed to the server
     by this replication. This only considers documents that this replication would push: documents
@@ -184,19 +201,18 @@ typedef NS_ENUM(unsigned, CBLReplicationStatus) {
     changes. */
 - (BOOL) isDocumentPending: (CBLDocument*)doc;
 
+#pragma mark - ATTACHMENT DOWNLOADING (PULL ONLY)
+
+/** Starts an asynchronous download of an attachment that was skipped in a pull replication.
+    @param attachment  The attachment to download.
+    @return  An NSProgress object that will be updated to report the progress of the download.
+        You can use Key-Value Observing to observe its fractionCompleted property.
+        (Note: observer callbacks will be issued on a background thread!)
+        You can cancel the download by calling its -cancel method. */
+- (NSProgress*) downloadAttachment: (CBLAttachment*)attachment;
+
 
 - (instancetype) init NS_UNAVAILABLE;
-
-#ifdef CBL_DEPRECATED
-@property (nonatomic, copy) NSString* facebookEmailAddress
-    __attribute__((deprecated("set authenticator property instead")));
-- (BOOL) registerFacebookToken: (NSString*)token forEmailAddress: (NSString*)email
-    __attribute__((deprecated("set authenticator property instead")));
-- (BOOL) registerPersonaAssertion: (NSString*)assertion
-    __attribute__((deprecated("set authenticator property instead")));
-@property (nonatomic, copy) NSString* personaEmailAddress
-    __attribute__((deprecated("set authenticator property instead")));
-#endif
 
 @end
 
@@ -205,6 +221,9 @@ typedef NS_ENUM(unsigned, CBLReplicationStatus) {
     {status, running, error, completed, total}. It's often more convenient to observe this
     notification rather than observing each property individually. */
 extern NSString* const kCBLReplicationChangeNotification;
+
+/** NSProgress userInfo key used to report an NSError when an attachment download fails. */
+extern NSString* const kCBLProgressErrorKey;
 
 
 NS_ASSUME_NONNULL_END
