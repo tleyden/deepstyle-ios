@@ -4,6 +4,7 @@
 import Foundation
 import FBSDKCoreKit
 import FBSDKLoginKit
+import Crashlytics
 
 class LoginSession {
     
@@ -25,8 +26,8 @@ class LoginSession {
         
     }
     
-    func saveUserLoginInfo(userId: String) throws {
-        try saveUserIdForCurrentFBAccessToken(userId)
+    func saveUserLoginInfo(userId: String, name: String, email: String) throws {
+        try saveUserIdForCurrentFBAccessToken(userId, name: name, email: email)
     }
     
     // LoginSession.sharedInstance.lookupSavedUserIdForAccessToken(accessToken)
@@ -34,7 +35,12 @@ class LoginSession {
         return DBHelper.sharedInstance.lookupLocalDocKV(accessToken)
     }
     
-    func saveUserIdForCurrentFBAccessToken(userId: String) throws {
+    func saveUserIdForCurrentFBAccessToken(userId: String, name: String, email: String) throws {
+        
+        Crashlytics.sharedInstance().setUserIdentifier(userId)
+        Crashlytics.sharedInstance().setUserName(name)
+        Crashlytics.sharedInstance().setUserEmail(email)
+        
         if let accessToken = FBSDKAccessToken.currentAccessToken() {
             let localDocKey = accessToken.tokenString
             try DBHelper.sharedInstance.setLocalDocKV(localDocKey, value: userId)

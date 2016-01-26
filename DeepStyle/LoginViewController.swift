@@ -41,7 +41,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
             return
         }
         
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name,picture.width(480).height(480)"])
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
             if (error != nil)
@@ -51,9 +51,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Presenter
             else
             {
                 let userId = result.valueForKey("id") as! String
+                let name = result.valueForKey("name") as! String
+                let email = result.valueForKey("email") as! String
                 
                 do {
-                    try LoginSession.sharedInstance.saveUserLoginInfo(userId)
+                    try LoginSession.sharedInstance.saveUserLoginInfo(userId, name: name, email: email)
                 } catch {
                     self.showError("Error saving user ID", error: error)
                 }
