@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150DD44B1C5736BA003ADEAF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150DD4491C5736BA003ADEAF /* Fabric.framework */; };
+		150DD44C1C5736BA003ADEAF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150DD44A1C5736BA003ADEAF /* Crashlytics.framework */; };
 		153A39111C1DFF240030AD5D /* DeepStyle2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A39101C1DFF240030AD5D /* DeepStyle2Tests.swift */; };
 		153A391E1C1DFFD50030AD5D /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153A391D1C1DFFD50030AD5D /* CouchbaseLite.framework */; };
 		153A39201C1E005F0030AD5D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153A391F1C1E005F0030AD5D /* CFNetwork.framework */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		150DD4491C5736BA003ADEAF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		150DD44A1C5736BA003ADEAF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		153A38F81C1DFF240030AD5D /* DeepStyle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepStyle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153A390C1C1DFF240030AD5D /* DeepStyle.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeepStyle.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		153A39101C1DFF240030AD5D /* DeepStyle2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepStyle2Tests.swift; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 			files = (
 				157612E51C278F7300F26530 /* libc++.tbd in Frameworks */,
 				153A39281C1E007F0030AD5D /* libz.tbd in Frameworks */,
+				150DD44C1C5736BA003ADEAF /* Crashlytics.framework in Frameworks */,
 				157612E31C278F4200F26530 /* libCBLForestDBStorage.a in Frameworks */,
 				153A39261C1E00780030AD5D /* libsqlite3.tbd in Frameworks */,
 				15DC5D1B1C570DD70049E652 /* CRToast.framework in Frameworks */,
@@ -103,6 +108,7 @@
 				153A39201C1E005F0030AD5D /* CFNetwork.framework in Frameworks */,
 				153A392C1C1E02990030AD5D /* FBSDKLoginKit.framework in Frameworks */,
 				153A391E1C1DFFD50030AD5D /* CouchbaseLite.framework in Frameworks */,
+				150DD44B1C5736BA003ADEAF /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +128,8 @@
 				15DC5D1D1C5723BE0049E652 /* DeepStyle */,
 				153A390F1C1DFF240030AD5D /* DeepStyle2Tests */,
 				153A38F91C1DFF240030AD5D /* Products */,
+				150DD4491C5736BA003ADEAF /* Fabric.framework */,
+				150DD44A1C5736BA003ADEAF /* Crashlytics.framework */,
 				15DC5D1A1C570DD70049E652 /* CRToast.framework */,
 				153A392B1C1E02990030AD5D /* FBSDKLoginKit.framework */,
 				153A39291C1E02760030AD5D /* FBSDKCoreKit.framework */,
@@ -192,7 +200,8 @@
 				153A38F41C1DFF240030AD5D /* Sources */,
 				153A38F51C1DFF240030AD5D /* Frameworks */,
 				153A38F61C1DFF240030AD5D /* Resources */,
-				15DC5D1C1C570DF20049E652 /* ShellScript */,
+				15DC5D1C1C570DF20049E652 /* Run Script - Carthage Copy Frameworks */,
+				150DD4481C573671003ADEAF /* Run Script - Fabric Config */,
 			);
 			buildRules = (
 			);
@@ -296,9 +305,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "source ~/.bash_profile\nsed -i.bak \"s/DEEPSTYLE_FB_APP_ID/$DEEPSTYLE_FB_APP_ID/\" DeepStyle/Info.plist";
+			shellScript = "source ~/.bash_profile\nsed -i.bak \"s/DEEPSTYLE_FB_APP_ID/$DEEPSTYLE_FB_APP_ID/\" DeepStyle/Info.plist\nsed -i.bak \"s/DEEPSTYLE_FABRIC_APP_ID/$DEEPSTYLE_FABRIC_APP_ID/\" DeepStyle/Info.plist";
 		};
-		15DC5D1C1C570DF20049E652 /* ShellScript */ = {
+		150DD4481C573671003ADEAF /* Run Script - Fabric Config */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Fabric Config";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source ~/.bash_profile\n./Fabric.framework/run $DEEPSTYLE_FABRIC_APP_ID $DEEPSTYLE_FABRIC_APP_SECRET";
+		};
+		15DC5D1C1C570DF20049E652 /* Run Script - Carthage Copy Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -306,6 +329,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/CRToast.framework",
 			);
+			name = "Run Script - Carthage Copy Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
