@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import DeepStyle2
+@testable import DeepStyle
 
 class DeepStyle2Tests: XCTestCase {
     
