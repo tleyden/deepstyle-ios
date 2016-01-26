@@ -141,6 +141,7 @@ class DBHelper {
                 kCRToastAnimationInDirectionKey : CRToastAnimationDirection.Top.rawValue,
                 kCRToastAnimationOutDirectionKey : CRToastAnimationDirection.Top.rawValue,
                 kCRToastTimeIntervalKey: NSTimeInterval(5.0),
+                kCRToastNotificationTypeKey: CRToastType.StatusBar.rawValue,
             ]
             CRToastManager.showNotificationWithOptions(options as [NSObject : AnyObject], apperanceBlock: { () -> Void in
                     print("notification appeared")
