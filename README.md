@@ -12,10 +12,28 @@ Status: pre-pre-alpha
 
 ## Instructions to build
 
+Clone the repo:
+
 ```
 $ git clone <repo-url>
+```
+
+Get the Carthage dependencies:
+
+```
 $ carthage bootstrap
 ```
+
+Add the following environment variables to your `~/.bash_profile`:
+
+```
+export DEEPSTYLE_FB_APP_ID=<your facebook app id>
+export DEEPSTYLE_FABRIC_APP_ID=<your fabric app id>
+export DEEPSTYLE_FABRIC_APP_SECRET=<your fabric app secret>
+```
+
+Open XCode and build.
+
 
 ## Deploying
 
