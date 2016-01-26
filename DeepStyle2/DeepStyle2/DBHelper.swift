@@ -1,8 +1,11 @@
 
 
+import UIKit
 import Foundation
 import FBSDKCoreKit
 import FBSDKLoginKit
+import CRToast
+
 
 // All database access should go through this class
 
@@ -14,9 +17,20 @@ class DBHelper {
     // The remote database URL to sync with.
     static let serverDbURL = NSURL(string: "http://demo.couchbasemobile.com:4984/deepstyle/")!
     
+    // SG 1.2 CC
+    // static let serverDbURL = NSURL(string: "http://ec2-54-145-244-2.compute-1.amazonaws.com:4985/deepstyle-cc/")!
+    
+    // SG 1.2 DI
+    // static let serverDbURL = NSURL(string: "http://ec2-54-145-244-2.compute-1.amazonaws.com:4985/deepstyle-di/")!
+    
+    // SG 1.1
+    // static let serverDbURL = NSURL(string: "http://ec2-54-161-209-25.compute-1.amazonaws.com:4985/deepstyle-cc-sg-11/")!
+    
     static let sharedInstance = DBHelper()
     
     var database: CBLDatabase? = nil
+    
+    var lastReplicationError: NSError?
     
     init() {
         do {
@@ -28,6 +42,8 @@ class DBHelper {
             // dbmgr.dispatchQueue = dispatch_get_main_queue();
             
             try database = CBLManager.sharedInstance().databaseNamed(DBHelper.databaseName)
+            
+            print("Manager directory \(CBLManager.sharedInstance().directory)")
             
         }
         catch {
@@ -83,6 +99,12 @@ class DBHelper {
         }
         pull?.customProperties = ["websocket": false]
         
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "replicationProgress:",
+            name: kCBLReplicationChangeNotification,
+            object: push
+        )
+        
         let replicators = [push, pull]
         for replicator in replicators {
             replicator?.authenticator = fbAuthenticator
@@ -90,6 +112,44 @@ class DBHelper {
             replicator?.start()
         }
     
+    }
+    
+    @objc func replicationProgress(n: NSNotification) {
+        
+        if n.object == nil {
+            return
+        }
+        
+        let replication = n.object as! CBLReplication
+        
+        if (replication.lastError != nil) {
+            
+            print("Replication \(replication) got an error: \(replication.lastError)")
+            
+            var direction = "Upload"
+            if replication.pull {
+                direction = "Download"
+            }
+            let errorText = "Cloud \(direction) Error 😖"
+
+            let options: NSDictionary = [
+                kCRToastTextKey : errorText,
+                kCRToastTextAlignmentKey : NSTextAlignment.Center.rawValue,
+                kCRToastBackgroundColorKey : UIColor.redColor(),
+                kCRToastAnimationInTypeKey : CRToastAnimationType.Gravity.rawValue,
+                kCRToastAnimationOutTypeKey : CRToastAnimationType.Gravity.rawValue,
+                kCRToastAnimationInDirectionKey : CRToastAnimationDirection.Top.rawValue,
+                kCRToastAnimationOutDirectionKey : CRToastAnimationDirection.Top.rawValue,
+                kCRToastTimeIntervalKey: NSTimeInterval(5.0),
+            ]
+            CRToastManager.showNotificationWithOptions(options as [NSObject : AnyObject], apperanceBlock: { () -> Void in
+                    print("notification appeared")
+                }, completionBlock: { () -> Void in
+                    print("notification done")
+            })
+            
+        }
+        
     }
     
     func createDeepStyleJob(sourceImage: UIImage, styleImage: UIImage) throws -> DeepStyleJob {
