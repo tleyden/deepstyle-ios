@@ -296,7 +296,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cat DeepStyle/Info.plist\n# source ~/.bash_profile\necho $SPLUNK_SERVER\nsed -i.bak 's/fb448435592033063/newword/' DeepStyle/Info.plist";
+			shellScript = "source ~/.bash_profile\nsed -i.bak \"s/DEEPSTYLE_FB_APP_ID/$DEEPSTYLE_FB_APP_ID/\" DeepStyle/Info.plist";
 		};
 		15DC5D1C1C570DF20049E652 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
