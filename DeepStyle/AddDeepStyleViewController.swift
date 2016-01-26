@@ -1,5 +1,7 @@
 
 import UIKit
+import Crashlytics
+
 
 // Note regarding @objc(AddDeepStyleViewController) -- this is needed to workaround for crash where all IBOutlets are nil with iOS 8.x
 // http://bit.ly/1JHyDzo + http://bit.ly/1JHyDzo
@@ -25,7 +27,7 @@ import UIKit
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel:")
         self.navigationItem.leftBarButtonItem = cancelButton;
         
-        let nextButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: "next:")
+        let nextButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: "next2:")
         self.navigationItem.rightBarButtonItem = nextButton;
         
     }
@@ -34,9 +36,11 @@ import UIKit
         presenterViewController?.dismiss()
     }
     
-    func next(sender: UIBarButtonItem) {
+    func next2(sender: UIBarButtonItem) {
         
         // push the view controller to add a gallery image
+        
+        Crashlytics.sharedInstance().crash()
         
     }
     
