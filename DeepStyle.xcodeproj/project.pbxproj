@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		150DD44B1C5736BA003ADEAF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150DD4491C5736BA003ADEAF /* Fabric.framework */; };
 		150DD44C1C5736BA003ADEAF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150DD44A1C5736BA003ADEAF /* Crashlytics.framework */; };
+		150DD4621C59ABC9003ADEAF /* AddDeepStylePaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150DD4601C59ABC9003ADEAF /* AddDeepStylePaintingViewController.swift */; };
+		150DD4631C59ABC9003ADEAF /* AddDeepStylePaintingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150DD4611C59ABC9003ADEAF /* AddDeepStylePaintingViewController.xib */; };
 		153A39111C1DFF240030AD5D /* DeepStyle2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A39101C1DFF240030AD5D /* DeepStyle2Tests.swift */; };
 		153A391E1C1DFFD50030AD5D /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153A391D1C1DFFD50030AD5D /* CouchbaseLite.framework */; };
 		153A39201C1E005F0030AD5D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153A391F1C1E005F0030AD5D /* CFNetwork.framework */; };
@@ -54,6 +56,8 @@
 /* Begin PBXFileReference section */
 		150DD4491C5736BA003ADEAF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		150DD44A1C5736BA003ADEAF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		150DD4601C59ABC9003ADEAF /* AddDeepStylePaintingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeepStylePaintingViewController.swift; sourceTree = "<group>"; };
+		150DD4611C59ABC9003ADEAF /* AddDeepStylePaintingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeepStylePaintingViewController.xib; sourceTree = "<group>"; };
 		153A38F81C1DFF240030AD5D /* DeepStyle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepStyle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153A390C1C1DFF240030AD5D /* DeepStyle.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeepStyle.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		153A39101C1DFF240030AD5D /* DeepStyle2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepStyle2Tests.swift; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 			children = (
 				15DC5D2E1C5723BE0049E652 /* Info.plist */,
 				15DC5D211C5723BE0049E652 /* Assets.xcassets */,
+				150DD4601C59ABC9003ADEAF /* AddDeepStylePaintingViewController.swift */,
+				150DD4611C59ABC9003ADEAF /* AddDeepStylePaintingViewController.xib */,
 				15DC5D1E1C5723BE0049E652 /* AddDeepStyleViewController.swift */,
 				15DC5D1F1C5723BE0049E652 /* AddDeepStyleViewController.xib */,
 				15DC5D201C5723BE0049E652 /* AppDelegate.swift */,
@@ -276,6 +282,7 @@
 			files = (
 				15DC5D3F1C5723BE0049E652 /* GalleryViewController.xib in Resources */,
 				15DC5D3D1C5723BE0049E652 /* GalleryTableViewCell.xib in Resources */,
+				150DD4631C59ABC9003ADEAF /* AddDeepStylePaintingViewController.xib in Resources */,
 				15DC5D401C5723BE0049E652 /* Info.plist in Resources */,
 				15DC5D351C5723BE0049E652 /* Assets.xcassets in Resources */,
 				15DC5D331C5723BE0049E652 /* AddDeepStyleViewController.xib in Resources */,
@@ -344,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15DC5D3C1C5723BE0049E652 /* GalleryTableViewCell.swift in Sources */,
+				150DD4621C59ABC9003ADEAF /* AddDeepStylePaintingViewController.swift in Sources */,
 				15DC5D361C5723BE0049E652 /* CBUITableSource.m in Sources */,
 				15DC5D341C5723BE0049E652 /* AppDelegate.swift in Sources */,
 				15DC5D381C5723BE0049E652 /* DeepStyleJob.swift in Sources */,

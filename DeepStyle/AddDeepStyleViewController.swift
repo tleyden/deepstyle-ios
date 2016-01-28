@@ -53,6 +53,8 @@ import Crashlytics
         if let photo = photoImage {
             // TODO: push AddDeepStylePaintingImage to stack
             print("photo: \(photo)")
+            let addPainting = AddDeepStylePaintingViewController()
+            self.navigationController?.pushViewController(addPainting, animated: true)  
             
         } else {
             showError(AddJobError.MissingImage)
