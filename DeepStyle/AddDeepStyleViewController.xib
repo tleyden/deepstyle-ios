@@ -7,9 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddDeepStyleViewController" customModule="DeepStyle" customModuleProvider="target">
             <connections>
-                <outlet property="choosePaintingButton" destination="VQp-KA-YCY" id="4Zw-Kz-Jql"/>
                 <outlet property="choosePhotoButton" destination="kcd-FE-68q" id="qMn-Ai-fGF"/>
-                <outlet property="paintingImageView" destination="ECr-hY-Jf5" id="8Q5-uI-BbN"/>
                 <outlet property="photoImageView" destination="H5K-c2-ogV" id="omp-pg-Yfj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -19,36 +17,41 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQp-KA-YCY">
-                    <rect key="frame" x="44" y="238" width="112" height="30"/>
-                    <state key="normal" title="Choose Painting"/>
-                    <connections>
-                        <action selector="doPick:" destination="-1" eventType="touchUpInside" id="NOO-eS-3Xp"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmA-v6-6jd">
-                    <rect key="frame" x="44" y="392" width="46" height="30"/>
-                    <state key="normal" title="Create"/>
-                    <connections>
-                        <action selector="create:" destination="-1" eventType="touchUpInside" id="JxE-wX-jvo"/>
-                    </connections>
-                </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H5K-c2-ogV">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-gear" translatesAutoresizingMaskIntoConstraints="NO" id="H5K-c2-ogV">
                     <rect key="frame" x="44" y="139" width="122" height="91"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ECr-hY-Jf5">
-                    <rect key="frame" x="44" y="285" width="122" height="84"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcd-FE-68q">
-                    <rect key="frame" x="44" y="95" width="97" height="30"/>
-                    <state key="normal" title="Choose Photo"/>
+                    <rect key="frame" x="37" y="120" width="137" height="129"/>
                     <connections>
                         <action selector="doPick:" destination="-1" eventType="touchUpInside" id="NBb-9H-SNp"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a preset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaY-Ir-c1S">
+                    <rect key="frame" x="48" y="276" width="126" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Take a photo or choose existing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJX-t1-NSb">
+                    <rect key="frame" x="31" y="83" width="243" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back_porch" translatesAutoresizingMaskIntoConstraints="NO" id="4kr-d0-7Q3">
+                    <rect key="frame" x="21" y="322" width="183" height="105"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backyard" translatesAutoresizingMaskIntoConstraints="NO" id="ETD-Vd-Ny7">
+                    <rect key="frame" x="21" y="445" width="183" height="109"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
         </view>
     </objects>
+    <resources>
+        <image name="back_porch" width="640" height="480"/>
+        <image name="backyard" width="3264" height="2448"/>
+        <image name="icon-gear" width="128" height="128"/>
+    </resources>
 </document>

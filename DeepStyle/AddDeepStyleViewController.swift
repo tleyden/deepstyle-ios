@@ -13,12 +13,9 @@ import Crashlytics
     var presenterViewController: PresenterViewController? = nil
     
     var photoImage: UIImage? = nil
-    var paintingImage: UIImage? = nil
     
     @IBOutlet var choosePhotoButton: UIButton? = nil
-    @IBOutlet var choosePaintingButton: UIButton? = nil
     @IBOutlet var photoImageView: UIImageView? = nil
-    @IBOutlet var paintingImageView: UIImageView? = nil
 
     override func viewDidLoad() {
         
@@ -27,21 +24,15 @@ import Crashlytics
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel:")
         self.navigationItem.leftBarButtonItem = cancelButton;
         
-        let nextButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: "next2:")
+        let nextButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: "create:")
         self.navigationItem.rightBarButtonItem = nextButton;
+        
+        self.navigationItem.title = "Choose Photo"
         
     }
 
     func cancel(sender: UIBarButtonItem) {
         presenterViewController?.dismiss()
-    }
-    
-    func next2(sender: UIBarButtonItem) {
-        
-        // push the view controller to add a gallery image
-        
-        Crashlytics.sharedInstance().crash()
-        
     }
     
     func showError(error: ErrorType) {
@@ -59,12 +50,9 @@ import Crashlytics
     
     @IBAction func create(sender: AnyObject) {
         
-        if let photo = photoImage, painting = paintingImage {
-            do {
-                try sourceAndStyleReceiver?.dismissWithImages(photo, styleImage: painting)
-            } catch {
-                showError(error)
-            }
+        if let photo = photoImage {
+            // TODO: push AddDeepStylePaintingImage to stack
+            print("photo: \(photo)")
             
         } else {
             showError(AddJobError.MissingImage)
@@ -73,19 +61,9 @@ import Crashlytics
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        print("imagePickerController didFinishPickingMediaWithInfo")
-        print(info)
-        print(picker.view.tag)
-        if picker.view.tag == 0 {
-            if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                self.photoImage = image
-                self.photoImageView!.image = image
-            }
-        } else {
-            if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                self.paintingImage = image
-                self.paintingImageView!.image = image
-            }
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.photoImage = image
+            self.photoImageView!.image = image
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -97,24 +75,17 @@ import Crashlytics
         let src = UIImagePickerControllerSourceType.PhotoLibrary
         let ok = UIImagePickerController.isSourceTypeAvailable(src)
         if !ok {
-            print("alas")
             return
         }
         
         let arr = UIImagePickerController.availableMediaTypesForSourceType(src)
         if arr == nil {
-            print("no available types")
             return
         }
         let picker = UIImagePickerController() // see comments below for reason
         picker.sourceType = src
         picker.mediaTypes = arr!
         picker.delegate = self
-        if sender as? UIButton == choosePhotoButton! {
-            picker.view.tag = 0
-        } else if sender as? UIButton == choosePaintingButton! {
-            picker.view.tag = 1
-        }
         
         picker.allowsEditing = false // try true
         
