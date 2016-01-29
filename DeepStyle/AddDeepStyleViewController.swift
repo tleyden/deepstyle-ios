@@ -13,10 +13,13 @@ import Crashlytics
     var presenterViewController: PresenterViewController? = nil
     
     var photoImage: UIImage? = nil
-    
+        
     @IBOutlet var choosePhotoButton: UIButton? = nil
     @IBOutlet var photoImageView: UIImageView? = nil
 
+    @IBOutlet var preset1ImageView: UIImageView? = nil
+    @IBOutlet var preset2ImageView: UIImageView? = nil
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -24,7 +27,7 @@ import Crashlytics
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel:")
         self.navigationItem.leftBarButtonItem = cancelButton;
         
-        let nextButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: "create:")
+        let nextButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: "next:")
         self.navigationItem.rightBarButtonItem = nextButton;
         
         self.navigationItem.title = "Choose Photo"
@@ -48,12 +51,25 @@ import Crashlytics
     
     }
     
-    @IBAction func create(sender: AnyObject) {
+    @IBAction func presetImage1Tapped(img: AnyObject) {
+        photoImageView?.image = preset1ImageView?.image
+    }
+    
+    @IBAction func presetImage2Tapped(img: AnyObject) {
+        photoImageView?.image = preset2ImageView?.image
+    }
+    
+    @IBAction func next(sender: AnyObject) {
         
-        if let photo = photoImage {
+        if let photo = photoImageView?.image {
+            
             // TODO: push AddDeepStylePaintingImage to stack
             print("photo: \(photo)")
             let addPainting = AddDeepStylePaintingViewController()
+            
+            addPainting.sourceAndStyleReceiver = self.sourceAndStyleReceiver
+            addPainting.photoImage = photo
+            
             self.navigationController?.pushViewController(addPainting, animated: true)  
             
         } else {

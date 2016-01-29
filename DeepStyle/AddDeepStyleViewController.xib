@@ -9,6 +9,8 @@
             <connections>
                 <outlet property="choosePhotoButton" destination="kcd-FE-68q" id="qMn-Ai-fGF"/>
                 <outlet property="photoImageView" destination="H5K-c2-ogV" id="omp-pg-Yfj"/>
+                <outlet property="preset1ImageView" destination="4kr-d0-7Q3" id="0mA-EU-UbP"/>
+                <outlet property="preset2ImageView" destination="ETD-Vd-Ny7" id="nvx-Uv-qxE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,41 +19,57 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-gear" translatesAutoresizingMaskIntoConstraints="NO" id="H5K-c2-ogV">
-                    <rect key="frame" x="44" y="139" width="122" height="91"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image_placeholder_icon" translatesAutoresizingMaskIntoConstraints="NO" id="H5K-c2-ogV">
+                    <rect key="frame" x="37" y="122" width="200" height="127"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcd-FE-68q">
-                    <rect key="frame" x="37" y="120" width="137" height="129"/>
+                    <rect key="frame" x="37" y="112" width="200" height="147"/>
                     <connections>
                         <action selector="doPick:" destination="-1" eventType="touchUpInside" id="NBb-9H-SNp"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a preset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaY-Ir-c1S">
-                    <rect key="frame" x="48" y="276" width="126" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Take a photo or choose existing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJX-t1-NSb">
-                    <rect key="frame" x="31" y="83" width="243" height="21"/>
+                    <rect key="frame" x="26" y="83" width="243" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back_porch" translatesAutoresizingMaskIntoConstraints="NO" id="4kr-d0-7Q3">
-                    <rect key="frame" x="21" y="322" width="183" height="105"/>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back_porch" translatesAutoresizingMaskIntoConstraints="NO" id="4kr-d0-7Q3">
+                    <rect key="frame" x="37" y="322" width="183" height="105"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="OHH-dk-PaN" appends="YES" id="Grp-Bx-Gk9"/>
+                    </connections>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backyard" translatesAutoresizingMaskIntoConstraints="NO" id="ETD-Vd-Ny7">
-                    <rect key="frame" x="21" y="445" width="183" height="109"/>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backyard" translatesAutoresizingMaskIntoConstraints="NO" id="ETD-Vd-Ny7">
+                    <rect key="frame" x="37" y="446" width="183" height="109"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="esy-2h-E55" appends="YES" id="oHR-vN-auy"/>
+                    </connections>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Or choose a preset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaY-Ir-c1S">
+                    <rect key="frame" x="26" y="276" width="146" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
         </view>
+        <tapGestureRecognizer id="OHH-dk-PaN">
+            <connections>
+                <action selector="presetImage1Tapped:" destination="-1" id="o0c-r9-vuv"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="esy-2h-E55">
+            <connections>
+                <action selector="presetImage2Tapped:" destination="-1" id="L9r-QG-kSa"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="back_porch" width="640" height="480"/>
         <image name="backyard" width="3264" height="2448"/>
-        <image name="icon-gear" width="128" height="128"/>
+        <image name="image_placeholder_icon" width="960" height="540"/>
     </resources>
 </document>

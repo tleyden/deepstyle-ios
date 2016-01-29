@@ -171,10 +171,10 @@
 			children = (
 				15DC5D2E1C5723BE0049E652 /* Info.plist */,
 				15DC5D211C5723BE0049E652 /* Assets.xcassets */,
-				150DD4601C59ABC9003ADEAF /* AddDeepStylePaintingViewController.swift */,
-				150DD4611C59ABC9003ADEAF /* AddDeepStylePaintingViewController.xib */,
 				15DC5D1E1C5723BE0049E652 /* AddDeepStyleViewController.swift */,
 				15DC5D1F1C5723BE0049E652 /* AddDeepStyleViewController.xib */,
+				150DD4601C59ABC9003ADEAF /* AddDeepStylePaintingViewController.swift */,
+				150DD4611C59ABC9003ADEAF /* AddDeepStylePaintingViewController.xib */,
 				15DC5D201C5723BE0049E652 /* AppDelegate.swift */,
 				15DC5D221C5723BE0049E652 /* CBUITableSource.h */,
 				15DC5D231C5723BE0049E652 /* CBUITableSource.m */,
