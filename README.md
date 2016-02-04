@@ -1,12 +1,10 @@
 
 This is an iOS app that uses [neural-style](https://github.com/jcjohnson/neural-style) to apply a style from one image (usually a painting) to another image (usually a photograph).
 
-See [screenshots](https://github.com/tleyden/deepstyle-ios/tree/master/screenshots)
+It's built on top of [Couchbase Lite iOS](https://github.com/couchbase/couchbase-lite-ios) and the open source [Couchbase Mobile](http://mobile.couchbase.com) mobile database product suite.
 
-![](https://raw.githubusercontent.com/tleyden/deepstyle-ios/master/screenshots/fb_login_1.png)
+<img src="https://raw.githubusercontent.com/tleyden/deepstyle-ios/master/screenshots/deepstyle_screenshots_animated.gif" width="400">
 
-
-Status: pre-pre-alpha
 
 ## Pre-requisites to build
 
@@ -19,6 +17,12 @@ Clone the repo:
 
 ```
 $ git clone <repo-url>
+```
+
+Install Carthage:
+
+```
+$ brew install carthage
 ```
 
 Get the Carthage dependencies:
@@ -41,4 +45,5 @@ Open XCode and build.
 ## Deploying
 
 * Install [Couchbase Sync Gateway](https://github.com/couchbase/sync_gateway)
-* Install the [accompanying backend module](https://github.com/tleyden/deepstyle) 
+* Install the [accompanying backend module](https://github.com/tleyden/deepstyle)
+
