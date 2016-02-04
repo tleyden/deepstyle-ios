@@ -3,7 +3,7 @@ This is an iOS app that uses [neural-style](https://github.com/jcjohnson/neural-
 
 See [screenshots](https://github.com/tleyden/deepstyle-ios/tree/master/screenshots)
 
-![](https://raw.githubusercontent.com/tleyden/deepstyle-ios/master/screenshots/fb_login_1.png | width=100)
+![](https://raw.githubusercontent.com/tleyden/deepstyle-ios/master/screenshots/fb_login_1.png)
 
 
 Status: pre-pre-alpha
