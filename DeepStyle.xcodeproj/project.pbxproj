@@ -248,7 +248,7 @@
 				TargetAttributes = {
 					153A38F71C1DFF240030AD5D = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 5224A8CWX3;
+						DevelopmentTeam = N2Q372V7W2;
 					};
 					153A390B1C1DFF240030AD5D = {
 						CreatedOnToolsVersion = 7.2;
@@ -473,6 +473,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -490,6 +491,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = co.deepstyle.DeepStyle;
 				PRODUCT_NAME = DeepStyle;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DeepStyle/Couchbase-Lite-Bridging-Header.h";
 			};
 			name = Debug;
@@ -499,6 +501,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -515,6 +518,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = co.deepstyle.DeepStyle;
 				PRODUCT_NAME = DeepStyle;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DeepStyle/Couchbase-Lite-Bridging-Header.h";
 			};
 			name = Release;
