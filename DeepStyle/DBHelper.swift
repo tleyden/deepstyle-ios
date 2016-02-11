@@ -15,7 +15,10 @@ class DBHelper {
     static let databaseName = "deepstyle"
     
     // The remote database URL to sync with.
-    static let serverDbURL = NSURL(string: "http://demo.couchbasemobile.com:4984/deepstyle/")!
+    
+    static let serverDbURL = NSURL(string: "http://demo-mobile.couchbase.com/deepstyle/")!
+    
+    // static let serverDbURL = NSURL(string: "http://demo.couchbasemobile.com:4984/deepstyle/")!
     
     // SG 1.2 CC
     // static let serverDbURL = NSURL(string: "http://ec2-54-145-244-2.compute-1.amazonaws.com:4985/deepstyle-cc/")!
