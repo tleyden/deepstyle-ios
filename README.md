@@ -44,6 +44,6 @@ Open XCode and build.
 
 ## Deploying
 
-* Install [Couchbase Sync Gateway](https://github.com/couchbase/sync_gateway)
+* Install [Couchbase Sync Gateway](https://github.com/couchbase/sync_gateway) and use [this Sync Gateway config](https://github.com/tleyden/deepstyle/blob/master/docs/sync-gateway-config.json) 
 * Install the [accompanying backend module](https://github.com/tleyden/deepstyle)
 
