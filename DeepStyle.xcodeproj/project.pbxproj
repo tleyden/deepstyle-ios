@@ -491,7 +491,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = co.deepstyle.DeepStyle;
 				PRODUCT_NAME = DeepStyle;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "329e2803-624b-4e1e-bad2-3e95aab4a983";
 				SWIFT_OBJC_BRIDGING_HEADER = "DeepStyle/Couchbase-Lite-Bridging-Header.h";
 			};
 			name = Debug;
@@ -518,7 +518,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = co.deepstyle.DeepStyle;
 				PRODUCT_NAME = DeepStyle;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "329e2803-624b-4e1e-bad2-3e95aab4a983";
 				SWIFT_OBJC_BRIDGING_HEADER = "DeepStyle/Couchbase-Lite-Bridging-Header.h";
 			};
 			name = Release;
