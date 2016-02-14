@@ -13,11 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        // Register for push notifications
-        application.registerForRemoteNotifications()
-        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
-        application.registerUserNotificationSettings(settings)
-
         Fabric.with([Crashlytics.self])
 
         FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
@@ -75,15 +70,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
         }
         
-        print("didRegisterForRemoteNotificationsWithDeviceToken, Cleaned device token token: \(tokenString)")
+        do {
+            try DBHelper.sharedInstance.setLocalDocKV(Constants.localDocumentKeyDeviceToken, value: tokenString)
+        } catch {
+            print("Error calling setLocalDocKV with tokenString: \(tokenString).  Error: \(error)")
+            showError("Error registering for remote notifications 😖")
+        }
         
+        print("didRegisterForRemoteNotificationsWithDeviceToken, Cleaned device token token: \(tokenString)")
         
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        print("Couldn't register: \(error)")
+        // This will get clled back if the user refuses to receive remote notifications, so no need to show an error
+        print("Couldn't register for remote notifications: \(error)")
     }
     
-    
+
 }
 

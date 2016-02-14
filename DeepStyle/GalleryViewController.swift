@@ -112,7 +112,11 @@ import FBSDKLoginKit
     }
     
     func dismissWithImages(sourceImage: UIImage, styleImage: UIImage) throws {
-        print("todo, process images")
+
+        // Register for push notifications
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         
         let deepStyleJob = try DBHelper.sharedInstance.createDeepStyleJob(sourceImage, styleImage: styleImage)
         print("DeepStyleJob: \(deepStyleJob)")
