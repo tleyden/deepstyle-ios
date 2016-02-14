@@ -13,6 +13,7 @@ class DeepStyleJob: CBLModel {
     
     @NSManaged var state: String?
     @NSManaged var owner: String?
+    @NSManaged var owner_devicetoken: String?
     
     func styleImage() -> UIImage? {
         return imageAttachmentByName("style_image")

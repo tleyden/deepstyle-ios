@@ -93,6 +93,15 @@ import FBSDKLoginKit
     
     func addDeepStyle(sender: UIBarButtonItem) {
         
+        
+        // TODO: this should detect if the user is already registered for push notifications
+        //       or not.  if they aren't, then it should show a separate screen which explains
+        //       what's going on ("jobs take 10 minutes, this will notify you when it's done")
+        // Register for push notifications
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        
         let addDeepStyle = AddDeepStyleViewController()
         
         // register ourselves as the presenter view controller delegate, so we get called back
@@ -112,11 +121,6 @@ import FBSDKLoginKit
     }
     
     func dismissWithImages(sourceImage: UIImage, styleImage: UIImage) throws {
-
-        // Register for push notifications
-        UIApplication.sharedApplication().registerForRemoteNotifications()
-        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         
         let deepStyleJob = try DBHelper.sharedInstance.createDeepStyleJob(sourceImage, styleImage: styleImage)
         print("DeepStyleJob: \(deepStyleJob)")

@@ -166,6 +166,7 @@ class DBHelper {
         let deepStyleJob:DeepStyleJob = DeepStyleJob(forNewDocumentInDatabase: database!)
         deepStyleJob.state = "READY_TO_PROCESS"
         try deepStyleJob.owner = LoginSession.sharedInstance.getLoggedInUserId()
+        deepStyleJob.owner_devicetoken = lookupLocalDocKV(Constants.localDocumentKeyDeviceToken)
         deepStyleJob.setValue(DeepStyleJob.docType, ofProperty: "type")
         deepStyleJob.setAttachmentNamed("source_image", withContentType: "image/jpg", content: sourceImageData!)
         deepStyleJob.setAttachmentNamed("style_image", withContentType: "image/jpg", content: styleImageData!)
